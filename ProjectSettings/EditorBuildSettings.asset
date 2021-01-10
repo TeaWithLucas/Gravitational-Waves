@@ -4,5 +4,28 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
-  m_configObjects: {}
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/OverlayMenu.unity
+    guid: 1b32fc13cdae7c344ad1158a95d8e8cc
+  - enabled: 1
+    path: Assets/Scenes/MainMenu.unity
+    guid: eed960dfed0531241bf2f465017b97b8
+  - enabled: 1
+    path: Assets/Examples/Pong/Scenes/pong.unity
+    guid: 89a84548859e3b643b4fb27984dc2b0d
+  - enabled: 1
+    path: Assets/Examples/Tanks/Scenes/Tanks.unity
+    guid: 83f9d2fb76f5742448c6e51f258327a2
+  - enabled: 1
+    path: Assets/Examples/MultipleMatches/Scenes/multiplematches.unity
+    guid: aa1f875396fa7d348a782cebc2f75d7c
+  - enabled: 1
+    path: Assets/Examples/Room/Scenes/OnlineScene.unity
+    guid: d7a6763559b31854586c9e49916273ef
+  - enabled: 1
+    path: Assets/Examples/RigidbodyPhysics/Scenes/BounceScene.unity
+    guid: b42449e4a64f03a42b999b0c118df11b
+  m_configObjects:
+    com.unity.adaptiveperformance.loader_settings: {fileID: 11400000, guid: 9cf0aa148b734d04185a2f61a8a63d70, type: 2}
+    com.unity.adaptiveperformance.simulator.provider_settings: {fileID: 11400000, guid: 6f74ee49a07591d4c9d8158ca174e453, type: 2}
