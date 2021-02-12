@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 namespace Game.UI.Menu {
     public class UIMainMenu : MonoBehaviour {
@@ -31,6 +32,17 @@ namespace Game.UI.Menu {
                     Debug.LogWarningFormat("No Action found for button: {0}", button.name);
                 }
             }
+        }
+
+        public void StartGame()
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        }
+
+        public void QuitGame()
+        {
+            Debug.Log("Game is closing");
+            Application.Quit();
         }
     }
 }
