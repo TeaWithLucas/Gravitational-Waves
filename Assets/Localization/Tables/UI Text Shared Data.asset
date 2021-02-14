@@ -1,0 +1,83 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b11a58205ec3474ca216360e9fa74a8, type: 3}
+  m_Name: UI Text Shared Data
+  m_EditorClassIdentifier: 
+  m_TableCollectionName: UI Text
+  m_TableCollectionNameGuidString: 3a5e1ce5f718a104694089b9d9e44914
+  m_Entries:
+  - m_Id: 89870143488
+    m_Key: Hello {0}
+    m_Metadata:
+      m_Items: []
+  - m_Id: 431861108736
+    m_Key: Goodbye
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2021087088640
+    m_Key: Settings
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2125563006976
+    m_Key: New Game
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2199303065600
+    m_Key: Version {0}
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2456627810304
+    m_Key: Exit
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2576719122432
+    m_Key: Gravitational Waves
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3496043450368
+    m_Key: Gravitational Waves Detection
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3625207042048
+    m_Key: Host
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3792236810240
+    m_Key: Client
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3891121721344
+    m_Key: Host and Client
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3997715763200
+    m_Key: Welcome to the {0} observatory
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12727240986624
+    m_Key: Options
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12812750262272
+    m_Key: Example
+    m_Metadata:
+      m_Items: []
+  m_Metadata:
+    m_Items: []
+  m_KeyGenerator:
+    id: 0
+  references:
+    version: 1
+    00000000:
+      type: {class: DistributedUIDGenerator, ns: UnityEngine.Localization.Tables, asm: Unity.Localization}
+      data:
+        m_CustomEpoch: 1613307575318
