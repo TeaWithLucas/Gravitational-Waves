@@ -7,7 +7,7 @@ At Ian's Request: DO NOT DELETE BRANCHES EVEN ONCE THEY ARE DONE
 1. Create Issue for Feature/Bug
 2. Assign weight to the issue during sprint planning
 3. Someone picks it up (assigns themselves to it) during the sprint
-4. They create a feature branch for it using the format ['feature'/'bug']-[issue number]/[description]
+4. They create a feature branch for it using the format [issue number]-['feature'/'bug']/[short description]
 5. Development....
 6. Create Pull Request from feature branch to develop
 7. Ticket goes into review.
