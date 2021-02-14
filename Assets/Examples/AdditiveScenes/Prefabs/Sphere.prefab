@@ -49,6 +49,7 @@ MonoBehaviour:
   sceneId: 0
   serverOnly: 0
   m_AssetId: 
+  hasSpawned: 0
 --- !u!114 &855244094988030908
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -65,11 +66,7 @@ MonoBehaviour:
   syncInterval: 0.1
   visRange: 5
   visUpdateInterval: 0.1
-  checkMethod: 0
   forceHidden: 0
-  castLayers:
-    serializedVersion: 2
-    m_Bits: 256
 --- !u!135 &855244094988030904
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -94,6 +91,7 @@ GameObject:
   - component: {fileID: 1367021456138387611}
   - component: {fileID: 2288322405747719638}
   - component: {fileID: 5301170368275118189}
+  - component: {fileID: 790069193792850646}
   m_Layer: 0
   m_Name: Sphere
   m_TagString: Untagged
@@ -137,6 +135,8 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -148,6 +148,7 @@ MeshRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
@@ -160,3 +161,22 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &790069193792850646
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1963619543076261731}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  outlineMode: 2
+  outlineColor: {r: 1, g: 1, b: 1, a: 1}
+  outlineWidth: 10
+  precomputeOutline: 0
+  bakeKeys: []
+  bakeValues: []
