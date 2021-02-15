@@ -31,6 +31,9 @@ namespace Game.Managers {
             AdditonalScenes = new List<string>();
 
             NavigationListeners = new Dictionary<string, UnityAction>() {
+                {"Join Game", JoinGame },
+                {"Host Game", HostGame },
+                {"Create Game", HostGame },
                 {"Tanks Example", TanksExample },
                 {"Pong Example", PongExample },
                 {"Bounce Example", BounceExample },
@@ -38,7 +41,9 @@ namespace Game.Managers {
                 {"Matches Example", MatchesExample },
                 {"Options", MenuOptions },
                 {"Main Menu", MenuMain },
-                {"Exit Game", MenuQuit },
+                {"Main Menu 2", MenuMain2 },
+                {"Exit", MenuQuit },
+                {"Quit", MenuQuit },
             };
             SceneManager.activeSceneChanged += OnSceneLoaded;
             Ready = true;
@@ -96,6 +101,16 @@ namespace Game.Managers {
 
         }
 
+        public static void JoinGame() {
+            OnExit?.Invoke();
+            LoadScene("JoinGame");
+        }
+
+        public static void HostGame() {
+            OnExit?.Invoke();
+            LoadScene("HostGame");
+        }
+
         public static void TanksExample() {
             OnExit?.Invoke();
             LoadScene("Tanks");
@@ -128,7 +143,14 @@ namespace Game.Managers {
         public static void MenuMain() {
             OnExit?.Invoke();
             LoadScene(mainMenu);
-            Debug.Log("OnExit");
+            Debug.Log("MainMenu");
+
+        }
+        public static void MenuMain2()
+        {
+            OnExit?.Invoke();
+            LoadScene(mainMenu);
+            Debug.Log("MainMenu2");
 
         }
 
