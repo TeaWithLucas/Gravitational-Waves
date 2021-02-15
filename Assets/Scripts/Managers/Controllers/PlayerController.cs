@@ -1,6 +1,8 @@
 using UnityEngine;
+using Mirror;
 
-namespace Mirror.Examples.Additive
+
+namespace Game.Managers.Controllers
 {
     [RequireComponent(typeof(CapsuleCollider))]
     [RequireComponent(typeof(CharacterController))]
@@ -25,9 +27,12 @@ namespace Mirror.Examples.Additive
         {
             Camera.main.orthographic = true;
             Camera.main.transform.SetParent(transform);
-            Camera.main.transform.localPosition = new Vector3(0f, 3f, -8f);
+            Camera.main.transform.localPosition = new Vector3(0f, 0f, 0f);
             //Camera.main.transform.localEulerAngles = new Vector3(10f, 0f, 0f);
-            Camera.main.transform.localEulerAngles = new Vector3(20f, 0f, 0f);
+            Camera.main.transform.localEulerAngles = new Vector3(30f, 0f, 0f);
+            Camera.main.orthographicSize = 10f;
+            Camera.main.nearClipPlane = -50f;
+            transform.Rotate(0f, 45f, 0f);
         }
 
         void OnDisable()
@@ -38,6 +43,7 @@ namespace Mirror.Examples.Additive
                 Camera.main.transform.SetParent(null);
                 Camera.main.transform.localPosition = new Vector3(0f, 70f, 0f);
                 Camera.main.transform.localEulerAngles = new Vector3(90f, 0f, 0f);
+                Camera.main.orthographicSize = 40f;
             }
         }
 
