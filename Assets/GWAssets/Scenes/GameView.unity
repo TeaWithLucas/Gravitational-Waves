@@ -2468,7 +2468,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e4767506b20da2499162565ba2566e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PlayerObject: {fileID: 3839215451019929112}
 --- !u!114 &1064077561
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2484,7 +2483,7 @@ MonoBehaviour:
   PlayerObject: {fileID: 3839215451019929112}
   IsInteractionAllowed: 1
   CanTriggerByTrigger: 0
-  triggerRadius: 5
+  triggerRadius: 3
   CanTriggerByMouse: 1
   CanTriggerByKeys: 1
   triggerKeys: 65000000
@@ -3236,6 +3235,7 @@ GameObject:
   - component: {fileID: 1526438452}
   - component: {fileID: 1526438451}
   - component: {fileID: 1526438450}
+  - component: {fileID: 1526438454}
   m_Layer: 0
   m_Name: Objective (1)
   m_TagString: Untagged
@@ -3319,6 +3319,19 @@ Transform:
   m_Father: {fileID: 1977851239}
   m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
+--- !u!135 &1526438454
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1526438449}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.5
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1610300100
 GameObject:
   m_ObjectHideFlags: 0
@@ -3331,6 +3344,9 @@ GameObject:
   - component: {fileID: 1610300103}
   - component: {fileID: 1610300102}
   - component: {fileID: 1610300101}
+  - component: {fileID: 1610300107}
+  - component: {fileID: 1610300106}
+  - component: {fileID: 1610300105}
   m_Layer: 0
   m_Name: Objective
   m_TagString: Untagged
@@ -3414,6 +3430,53 @@ Transform:
   m_Father: {fileID: 1140751381}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
+--- !u!114 &1610300105
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1610300100}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0e4767506b20da2499162565ba2566e7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1610300106
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1610300100}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0896e4e144d74d5469aa31a59e434147, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PlayerObject: {fileID: 3839215451019929112}
+  IsInteractionAllowed: 1
+  CanTriggerByTrigger: 0
+  triggerRadius: 3
+  CanTriggerByMouse: 1
+  CanTriggerByKeys: 1
+  triggerKeys: 65000000
+  OnInteraction:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!135 &1610300107
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1610300100}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.5
+  m_Center: {x: 0.00000011920929, y: 0, z: 0.0000076293945}
 --- !u!1 &1644218091
 GameObject:
   m_ObjectHideFlags: 0
