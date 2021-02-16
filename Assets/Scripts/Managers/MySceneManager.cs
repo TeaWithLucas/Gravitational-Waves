@@ -17,11 +17,9 @@ namespace Game.Managers {
 
         private static List<string> OverMenuScenes = new List<string>() { overlay, mainMenu };
 
-        private static string overlay = "OverlayMenu";
-        private static string mainMenu = "MainMenu";
+        public static string overlay = "OverlayMenu";
+        public static string mainMenu = "MainMenu2";
         private static event UnityAction OnExit;
-
-        public static Dictionary<string, UnityAction> NavigationListeners { get; private set; }
 
         public static bool Ready { get; private set; }
 
@@ -29,22 +27,6 @@ namespace Game.Managers {
         static MySceneManager() {
             Debug.Log("Loading MySceneManager");
             AdditonalScenes = new List<string>();
-
-            NavigationListeners = new Dictionary<string, UnityAction>() {
-                {"Join Game", JoinGame },
-                {"Host Game", HostGame },
-                {"Create Game", HostGame },
-                {"Tanks Example", TanksExample },
-                {"Pong Example", PongExample },
-                {"Bounce Example", BounceExample },
-                {"Room Example", RoomExample },
-                {"Matches Example", MatchesExample },
-                {"Options", MenuOptions },
-                {"Main Menu", MenuMain },
-                {"Main Menu 2", MenuMain2 },
-                {"Exit", MenuQuit },
-                {"Quit", MenuQuit },
-            };
             SceneManager.activeSceneChanged += OnSceneLoaded;
             Ready = true;
         }
@@ -54,6 +36,7 @@ namespace Game.Managers {
         }
 
         public static void LoadScene(string name) {
+            OnExit?.Invoke();
             if (name != null && name != "") {
                 Debug.LogFormat("Changing Scene from {0} to {1}", Current.name, name);
                 Previous = SceneManager.GetActiveScene();
@@ -101,65 +84,10 @@ namespace Game.Managers {
 
         }
 
-        public static void JoinGame() {
-            OnExit?.Invoke();
-            LoadScene("JoinGame");
-        }
-
-        public static void HostGame() {
-            OnExit?.Invoke();
-            LoadScene("HostGame");
-        }
-
-        public static void TanksExample() {
-            OnExit?.Invoke();
-            LoadScene("Tanks");
-        }
-
-        public static void PongExample() {
-            OnExit?.Invoke();
-            LoadScene("pong"); 
-        }
-
-        public static void BounceExample() {
-            OnExit?.Invoke();
-            LoadScene("BounceScene");
-        }
-
-        public static void RoomExample() {
-            OnExit?.Invoke();
-            LoadScene("OnlineScene");
-        }
-
-        public static void MatchesExample () {
-            OnExit?.Invoke();
-            LoadScene("multiplematches");
-        }
-
-        public static void MenuOptions() {
-            Debug.Log("Options");
-        }
-
-        public static void MenuMain() {
-            OnExit?.Invoke();
-            LoadScene(mainMenu);
-            Debug.Log("MainMenu");
-
-        }
-        public static void MenuMain2()
-        {
-            OnExit?.Invoke();
-            LoadScene(mainMenu);
-            Debug.Log("MainMenu2");
-
-        }
-
-        public static void MenuQuit() {
+        public static void MenuQuit(){
             OnExit?.Invoke();
             Debug.Log("Quit");
             Application.Quit();
         }
-
-
     }
 }
