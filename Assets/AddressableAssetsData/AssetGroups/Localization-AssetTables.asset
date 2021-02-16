@@ -1,0 +1,53 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
+  m_Name: Localization-AssetTables
+  m_EditorClassIdentifier: 
+  m_GroupName: Localization-AssetTables
+  m_Data:
+    m_SerializedData: []
+  m_GUID: fedf7e5dc47bb43469933294cec3dfff
+  m_SerializeEntries:
+  - m_GUID: 91dac7120a53a1147b80984e3e284893
+    m_Address: 2D Textures_cy-GB
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-cy-GB
+    m_MainAsset: {fileID: 0}
+    m_TargetAsset: {fileID: 0}
+  - m_GUID: d19030c99da65894f929b181ec3280c1
+    m_Address: 2D Textures_en-GB
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-en-GB
+    m_MainAsset: {fileID: 0}
+    m_TargetAsset: {fileID: 0}
+  - m_GUID: 42ad6a9a92045714c897cb5543bc9860
+    m_Address: 3D Textures_en-GB
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-en-GB
+    m_MainAsset: {fileID: 0}
+    m_TargetAsset: {fileID: 0}
+  - m_GUID: 59d631d495f71aa429a207af4a0dfa7b
+    m_Address: 3D Textures_cy-GB
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-cy-GB
+    m_MainAsset: {fileID: 0}
+    m_TargetAsset: {fileID: 0}
+  m_ReadOnly: 1
+  m_Settings: {fileID: 11400000, guid: dca3b86d7a5d8814ab8b9b3572e6fad9, type: 2}
+  m_SchemaSet:
+    m_Schemas:
+    - {fileID: 11400000, guid: ae0a1e846b351a94b8bee4dc10dd99dc, type: 2}
+    - {fileID: 11400000, guid: 8a959936ba5a120469a9830a355b763d, type: 2}
