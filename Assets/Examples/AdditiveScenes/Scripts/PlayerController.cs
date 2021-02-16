@@ -23,10 +23,11 @@ namespace Mirror.Examples.Additive
 
         public override void OnStartLocalPlayer()
         {
-            Camera.main.orthographic = false;
+            Camera.main.orthographic = true;
             Camera.main.transform.SetParent(transform);
             Camera.main.transform.localPosition = new Vector3(0f, 3f, -8f);
-            Camera.main.transform.localEulerAngles = new Vector3(10f, 0f, 0f);
+            //Camera.main.transform.localEulerAngles = new Vector3(10f, 0f, 0f);
+            Camera.main.transform.localEulerAngles = new Vector3(20f, 0f, 0f);
         }
 
         void OnDisable()
