@@ -9,6 +9,7 @@ public class PersonPositioner : MonoBehaviour
     private bool groundedPlayer;
     public float PlayerSpeed = 2.0f;
     public float JumpHeight = 1.0f;
+
     // Color32 packs to 4 bytes
     public Color32 PlayerColor = Color.green;
     private float gravityValue = -9.81f;

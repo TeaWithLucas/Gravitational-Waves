@@ -10,6 +10,12 @@
 /[Ll]ogs/
 /[Uu]ser[Ss]ettings/
 
+
+# Add Editor Game Settings asset into gitignore as it is a per-user cache file
+
+/UserSettings/EditorUserSettings.asset
+
+
 # MemoryCaptures can get excessive in size.
 # They also could contain extremely sensitive data
 /[Mm]emoryCaptures/
