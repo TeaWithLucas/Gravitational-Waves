@@ -2370,6 +2370,9 @@ GameObject:
   - component: {fileID: 1064077558}
   - component: {fileID: 1064077557}
   - component: {fileID: 1064077556}
+  - component: {fileID: 1064077562}
+  - component: {fileID: 1064077561}
+  - component: {fileID: 1064077560}
   m_Layer: 0
   m_Name: Objective (2)
   m_TagString: Untagged
@@ -2453,6 +2456,109 @@ Transform:
   m_Father: {fileID: 1977851239}
   m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: -127.808, z: 0}
+--- !u!114 &1064077560
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1064077555}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0e4767506b20da2499162565ba2566e7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PlayerObject: {fileID: 3839215451019929112}
+--- !u!114 &1064077561
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1064077555}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0896e4e144d74d5469aa31a59e434147, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PlayerObject: {fileID: 3839215451019929112}
+  IsInteractionAllowed: 1
+  CanTriggerByTrigger: 0
+  triggerRadius: 5
+  CanTriggerByMouse: 1
+  CanTriggerByKeys: 1
+  triggerKeys: 65000000
+  OnInteraction:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1094509063}
+        m_TargetAssemblyTypeName: DummyInteractionListener, Assembly-CSharp
+        m_MethodName: InteractionListenerMethod
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!135 &1064077562
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1064077555}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.5
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!1 &1094509061
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1094509062}
+  - component: {fileID: 1094509063}
+  m_Layer: 0
+  m_Name: GameObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1094509062
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1094509061}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1977851239}
+  m_RootOrder: 14
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1094509063
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1094509061}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 750f7b824635d0941b8d61aeb770dd7d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1138903112
 GameObject:
   m_ObjectHideFlags: 0
@@ -4402,6 +4508,7 @@ Transform:
   - {fileID: 822113265}
   - {fileID: 1526438453}
   - {fileID: 1064077559}
+  - {fileID: 1094509062}
   m_Father: {fileID: 305728371}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -4832,7 +4939,7 @@ GameObject:
   - component: {fileID: 363888448170737732}
   - component: {fileID: 3839215451019929113}
   m_Layer: 8
-  m_Name: Capsule
+  m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4852,6 +4959,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PlayerSpeed: 10
   JumpHeight: 1
+  PlayerColor:
+    serializedVersion: 2
+    rgba: 4278255360
 --- !u!23 &4201578184073134362
 MeshRenderer:
   m_ObjectHideFlags: 0
