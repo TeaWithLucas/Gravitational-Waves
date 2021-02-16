@@ -26,8 +26,8 @@ namespace Game.UI.Menu {
 
         private void AssignListenerCallbacks() {
             foreach (Button button in Buttons) {
-                if (MySceneManager.NavigationListeners.Keys.Any(x => button.name.ToLower().Contains(x.ToLower()))) {
-                    button.onClick.AddListener(MySceneManager.NavigationListeners.First(x => button.name.ToLower().Contains(x.Key.ToLower())).Value);
+                if (ActionManager.ActionListeners.Keys.Any(x => button.name.ToLower().Contains(x.ToLower()))) {
+                    button.onClick.AddListener(ActionManager.ActionListeners.First(x => button.name.ToLower().Contains(x.Key.ToLower())).Value);
                 } else {
                     Debug.LogWarningFormat("No Action found for button: {0}", button.name);
                 }
