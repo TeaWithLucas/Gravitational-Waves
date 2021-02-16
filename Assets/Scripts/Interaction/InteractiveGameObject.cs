@@ -19,7 +19,7 @@ public class InteractiveGameObject : MonoBehaviour, IInteractible
     public bool IsInteractionAllowed = true;
 
     [Tooltip("Whether the interaction can be triggered by entering the sphere trigger.")]
-    public bool CanTriggerByTrigger;
+    public bool CanTriggerByProximity;
 
     public float triggerRadius = 5f;
 
@@ -107,7 +107,7 @@ public class InteractiveGameObject : MonoBehaviour, IInteractible
 
         return interactionMethod switch
         {
-            InteractionMethod.Trigger => CanTriggerByTrigger,
+            InteractionMethod.Trigger => CanTriggerByProximity,
             InteractionMethod.Mouse => CanTriggerByMouse,
             InteractionMethod.Key => CanTriggerByKeys,
             _ => false,
