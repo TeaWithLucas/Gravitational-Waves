@@ -16,8 +16,8 @@ public class TaskInteractionController : MonoBehaviour
             interactiveComponent = GetComponent<InteractiveGameObject>();
             interactiveComponent.triggerRadius = 3f;
 
-            if (!interactiveComponent.triggerKeys.Contains(KeyCode.E))
-                interactiveComponent.triggerKeys.Add(KeyCode.E);
+            if (interactiveComponent.triggerKeys == null)
+                interactiveComponent.triggerKeys = new List<KeyCode> { KeyCode.E };
 
             interactiveComponent.IsInteractionAllowed = true;
             interactiveComponent.CanTriggerByKeys = true;
