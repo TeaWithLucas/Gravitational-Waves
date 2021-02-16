@@ -273,13 +273,31 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Player
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 1450262618009630701, guid: 8b19523b50b908a42862ae86390b5e0a, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 8b19523b50b908a42862ae86390b5e0a, type: 3}
 --- !u!1 &234235777 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6960346370392057992, guid: 8b19523b50b908a42862ae86390b5e0a, type: 3}
   m_PrefabInstance: {fileID: 152302129}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &234235778
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 234235777}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 40bf5e51b8a97274fbe672a83090275c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PlayerSpeed: 8
+  JumpHeight: 1
+  PlayerColor:
+    serializedVersion: 2
+    rgba: 4278255360
 --- !u!1 &234277862
 GameObject:
   m_ObjectHideFlags: 0
@@ -390,7 +408,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e4767506b20da2499162565ba2566e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PlayerObject: {fileID: 234235777}
 --- !u!114 &234277868
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -405,11 +422,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PlayerObject: {fileID: 234235777}
   IsInteractionAllowed: 1
-  CanTriggerByTrigger: 1
+  CanTriggerByTrigger: 0
   triggerRadius: 3
-  CanTriggerByMouse: 0
+  CanTriggerByMouse: 1
   CanTriggerByKeys: 1
-  triggerKeys: 65000000
+  triggerKeys: 6500000065000000
   OnInteraction:
     m_PersistentCalls:
       m_Calls:

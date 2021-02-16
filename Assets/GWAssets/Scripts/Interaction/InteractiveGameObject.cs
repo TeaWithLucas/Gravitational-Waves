@@ -75,7 +75,10 @@ public class InteractiveGameObject : MonoBehaviour, IInteractible
     {
         if (IsInteractableBy(InteractionMethod.Mouse))
         {
-            Interact();
+            if (Vector3.Distance(transform.position, PlayerObject.transform.position) <= triggerRadius)
+            {
+                Interact();
+            }
         }
     }
 
