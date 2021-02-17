@@ -14,5 +14,7 @@ public class PlayerTaskManager : MonoBehaviour
         {
             AssignedTasks.Add(DummyTaskRepository.GetRandomTask());
         }
+
+        Debug.Log(AssignedTasks[0].GetTitle());
     }
 }
