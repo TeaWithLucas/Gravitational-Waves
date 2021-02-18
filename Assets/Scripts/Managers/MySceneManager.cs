@@ -15,10 +15,10 @@ namespace Game.Managers {
 
         public static List<string> AdditonalScenes { get; private set; }
 
-        private static List<string> OverMenuScenes = new List<string>() { overlay, mainMenu };
+        private static List<string> OverMenuScenes;
 
         public static string overlay = "OverlayMenu";
-        public static string mainMenu = "MainMenu2";
+        public static string mainMenu = "MainMenu";
         private static event UnityAction OnExit;
 
         public static bool Ready { get; private set; }
@@ -27,6 +27,7 @@ namespace Game.Managers {
         static MySceneManager() {
             Debug.Log("Loading MySceneManager");
             AdditonalScenes = new List<string>();
+            OverMenuScenes = new List<string>() { overlay, mainMenu };
             SceneManager.activeSceneChanged += OnSceneLoaded;
             Ready = true;
         }
@@ -40,6 +41,7 @@ namespace Game.Managers {
             if (name != null && name != "") {
                 Debug.LogFormat("Changing Scene from {0} to {1}", Current.name, name);
                 Previous = SceneManager.GetActiveScene();
+                AdditonalScenes.Clear();
                 SceneManager.LoadScene(name, LoadSceneMode.Single);
                 AdditonalScenes = new List<string>();
             } else {
@@ -62,8 +64,8 @@ namespace Game.Managers {
         public static void RemoveScene(string name) {
             if (AdditonalScenes.Contains(name)) {
                 Debug.LogFormat("Removing Scene {0}", name);
-                SceneManager.UnloadSceneAsync(name);
                 AdditonalScenes.Remove(name);
+                SceneManager.UnloadSceneAsync(name);
             }
 
         }
@@ -77,6 +79,10 @@ namespace Game.Managers {
             if (AdditonalScenes.Contains(overlay)) {
                 RemoveScene(overlay);
             } else {
+                Debug.Log(Current.name);
+                Debug.Log(OverMenuScenes[1]);
+                Debug.Log(OverMenuScenes.Contains(Current.name));
+                
                 if (!OverMenuScenes.Contains(Current.name)) {
                     AddScene(overlay);
                 }
