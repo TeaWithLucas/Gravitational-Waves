@@ -23,6 +23,7 @@ namespace Game.Managers {
             Sprites = new List<Sprite>();
             Fonts = new List<TMP_FontAsset>();
             Texts = new List<TextAsset>();
+            
             InitTextures();
             InitAllSprites();
             InitFontAssets();
@@ -38,7 +39,10 @@ namespace Game.Managers {
 
         private static void InitTextures() {
             List<string> log = new List<string>();
-            foreach (Texture2D texture in Resources.LoadAll("Images", typeof(Texture2D))) {
+            List<Texture2D> textures = new List<Texture2D>();
+            textures.AddRange(Resources.LoadAll<Texture2D>("Textures").Cast<Texture2D>().ToList());
+            textures.AddRange(Resources.LoadAll<Texture2D>("Images").Cast<Texture2D>().ToList());
+            foreach (Texture2D texture in textures) {
                 Textures.Add(texture);
                 string name = texture.name != "" ? string.Format("{0}-tex", texture.name) : string.Format("Sprite-{0}", Sprites.Count);
                 log.Add(texture.name);
@@ -52,7 +56,13 @@ namespace Game.Managers {
 
         private static void InitAllSprites() {
             List<string> log = new List<string>();
-            foreach (Sprite asset in Resources.FindObjectsOfTypeAll<Sprite>()) {
+            //foreach (Sprite asset in Resources.FindObjectsOfTypeAll<Sprite>()) {
+            //    log.Add(asset.name);
+            //    Sprites.Add(asset);
+            //}
+            List<Sprite> sprites = new List<Sprite>();
+            sprites.AddRange(Resources.LoadAll<Sprite>("Sprites").Cast<Sprite>().ToList());
+            foreach (Sprite asset in sprites) {
                 log.Add(asset.name);
                 Sprites.Add(asset);
             }
@@ -61,7 +71,13 @@ namespace Game.Managers {
 
         private static void InitFontAssets() {
             List<string> log = new List<string>();
-            foreach (TMP_FontAsset asset in Resources.FindObjectsOfTypeAll<TMP_FontAsset>()) {
+            //foreach (TMP_FontAsset asset in Resources.FindObjectsOfTypeAll<TMP_FontAsset>()) {
+            //    log.Add(asset.name);
+            //    Fonts.Add(asset);
+            //}
+            List<TMP_FontAsset> fonts = new List<TMP_FontAsset>();
+            fonts.AddRange(Resources.LoadAll<TMP_FontAsset>("Fonts").Cast<TMP_FontAsset>().ToList());
+            foreach (TMP_FontAsset asset in fonts) {
                 log.Add(asset.name);
                 Fonts.Add(asset);
             }
@@ -70,7 +86,9 @@ namespace Game.Managers {
 
         private static void InitTextAssets() {
             List<string> log = new List<string>();
-            foreach (TextAsset asset in Resources.LoadAll("", typeof(TextAsset))) {
+            List<TextAsset> textFiles = new List<TextAsset>();
+            textFiles.AddRange(Resources.LoadAll<TextAsset>("Data").Cast<TextAsset>().ToList());
+            foreach (TextAsset asset in textFiles) {
                 log.Add(asset.name);
                 Texts.Add(asset);
             }
@@ -92,9 +110,11 @@ namespace Game.Managers {
 
             if (!Sprites.Any(x => x.name?.ToLower() == name.ToLower())) {
                 Debug.LogWarningFormat("No Sprite Found Named: {0}", name);
+                return Sprites[0];
+            } else {
+                return Sprites.First(x => x.name.ToLower() == name.ToLower());
             }
-
-            return Sprites.DefaultIfEmpty(Sprites[0]).FirstOrDefault(x => x.name.ToLower() == name.ToLower());
+            
 
         }
         public static TMP_FontAsset Font(string name) {
