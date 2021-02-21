@@ -162,5 +162,13 @@ MonoBehaviour:
     m_Localized: Fullscreen
     m_Metadata:
       m_Items: []
+  - m_Id: 2537036159930368
+    m_Localized: Exit Game
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2539604428738560
+    m_Localized: Continue
+    m_Metadata:
+      m_Items: []
   references:
     version: 1

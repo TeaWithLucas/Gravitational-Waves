@@ -163,6 +163,14 @@ MonoBehaviour:
     m_Key: Fullscreen
     m_Metadata:
       m_Items: []
+  - m_Id: 2537036159930368
+    m_Key: Exit Game
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2539604428738560
+    m_Key: Continue
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:
