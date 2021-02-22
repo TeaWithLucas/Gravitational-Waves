@@ -2,20 +2,22 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class CountdownTimer : MonoBehaviour
 
 
 {
     //delcaring vairiables used for the timer
-    float currentTime = 0f;
-    float startingTime = 30f;
+    [SerializeField] float currentTime = 0f;
+    [SerializeField] float startingTime = 30f;
 
-    [SerializeField] Text countdownText;
+    private TMP_Text countdownText;
 
     // Start is called before the first frame update
     void Start()
     {
+        countdownText = transform.GetComponentInChildren<TMP_Text>();
         currentTime = startingTime;
         
     }
