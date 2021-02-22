@@ -24,12 +24,12 @@ namespace Game.Managers.Controllers {
         // called second
         void OnSceneLoaded(Scene scene, LoadSceneMode mode) {
             Debug.Log("OnSceneLoaded: " + scene.name);
-            Debug.Log(mode);
+            //Debug.Log(mode);
         }
 
         // called third, before the first frame update
         void Start() {
-            Debug.Log("Start");
+            //Debug.Log("Start");
         }
 
         // called forth, Update is called once per frame

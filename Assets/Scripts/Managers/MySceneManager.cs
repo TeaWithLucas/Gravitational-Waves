@@ -1,24 +1,28 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.SceneManagement;
-using UnityEditor;
 using UnityEngine.Events;
 using System;
 using System.Collections.Generic;
 using static Game.Managers.UIManager;
 
+#if UNITY_EDITOR
+using UnityEditor;
+using UnityEditorInternal;
+#endif
+
 namespace Game.Managers {
     public static class MySceneManager {
 
         public static Scene Current { get => SceneManager.GetActiveScene(); }
-        public static Scene Previous { get; private set; }
+        public static Stack<string> Previous { get; private set; }
 
         public static List<string> AdditonalScenes { get; private set; }
 
-        private static List<string> OverMenuScenes = new List<string>() { overlay, mainMenu };
+        private static List<string> OverMenuScenes;
 
         public static string overlay = "OverlayMenu";
-        public static string mainMenu = "MainMenu2";
+        public static string mainMenu = "MainMenu";
         private static event UnityAction OnExit;
 
         public static bool Ready { get; private set; }
@@ -27,7 +31,9 @@ namespace Game.Managers {
         static MySceneManager() {
             Debug.Log("Loading MySceneManager");
             AdditonalScenes = new List<string>();
+            OverMenuScenes = new List<string>() { overlay, mainMenu };
             SceneManager.activeSceneChanged += OnSceneLoaded;
+            Previous = new Stack<string>();
             Ready = true;
         }
 
@@ -39,7 +45,8 @@ namespace Game.Managers {
             OnExit?.Invoke();
             if (name != null && name != "") {
                 Debug.LogFormat("Changing Scene from {0} to {1}", Current.name, name);
-                Previous = SceneManager.GetActiveScene();
+                Previous.Push(Current.name);
+                AdditonalScenes.Clear();
                 SceneManager.LoadScene(name, LoadSceneMode.Single);
                 AdditonalScenes = new List<string>();
             } else {
@@ -53,17 +60,17 @@ namespace Game.Managers {
             InstanceManager.Init();
         }
 
-        public static void AddScene(string name) {
-            Debug.LogFormat("Adding Scene {0}", name);
+        public static void LoadSceneAdditive(string name) {
+            Debug.LogFormat("Loading Additive Scene {0}", name);
             SceneManager.LoadScene(name, LoadSceneMode.Additive);
             AdditonalScenes.Add(name);
         }
 
-        public static void RemoveScene(string name) {
+        public static void UnloadScene(string name) {
             if (AdditonalScenes.Contains(name)) {
                 Debug.LogFormat("Removing Scene {0}", name);
-                SceneManager.UnloadSceneAsync(name);
                 AdditonalScenes.Remove(name);
+                SceneManager.UnloadSceneAsync(name);
             }
 
         }
@@ -75,19 +82,43 @@ namespace Game.Managers {
 
         internal static void OverlayMenuToggle() {
             if (AdditonalScenes.Contains(overlay)) {
-                RemoveScene(overlay);
+                UnloadOverlayMenu();
             } else {
-                if (!OverMenuScenes.Contains(Current.name)) {
-                    AddScene(overlay);
-                }
+                LoadOverlayMenu();
             }
 
         }
+        internal static void LoadOverlayMenu() {
+            if (!AdditonalScenes.Contains(overlay) && !OverMenuScenes.Contains(Current.name)) {
+                LoadSceneAdditive(overlay);
+            }
+        }
 
-        public static void MenuQuit(){
+        internal static void UnloadOverlayMenu() {
+            if (AdditonalScenes.Contains(overlay)) {
+                UnloadScene(overlay);
+            }
+        }
+
+
+        public static void LoadPreviousScene() {
+            Debug.Log(Previous.Peek());
+            LoadScene(Previous.Pop());
+            Previous.Pop();
+        }
+
+        public static void MenuExitGame(){
             OnExit?.Invoke();
-            Debug.Log("Quit");
+            Debug.Log("Exiting Game");
+#if UNITY_EDITOR
+            // Application.Quit() does not work in the editor so
+            // UnityEditor.EditorApplication.isPlaying need to be set to false to end the game
+            Debug.Log("UnityEditor Stop");
+            UnityEditor.EditorApplication.isPlaying = false;
+#else
+            Debug.Log("Application Quit");
             Application.Quit();
+#endif
         }
     }
 }
