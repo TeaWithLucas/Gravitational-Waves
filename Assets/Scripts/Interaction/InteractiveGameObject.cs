@@ -11,9 +11,9 @@ public enum InteractionMethod
 }
 
 [RequireComponent(typeof(SphereCollider))]
+[RequireComponent(typeof(NetworkProximityFinder))]
 public class InteractiveGameObject : MonoBehaviour, IInteractible
 {
-    public GameObject PlayerObject;
 
     [Tooltip("Toggle whether this Game Object can be interacted with.")]
     public bool IsInteractionAllowed = true;
@@ -36,11 +36,14 @@ public class InteractiveGameObject : MonoBehaviour, IInteractible
 
     private SphereCollider sphereCollider;
 
+    private NetworkProximityFinder networkProximityChecker;
+
     public void Start()
     {
         sphereCollider = GetComponent<SphereCollider>();
         sphereCollider.isTrigger = true;
         sphereCollider.radius = triggerRadius;
+        networkProximityChecker = transform.GetComponent<NetworkProximityFinder>();
     }
 
     public void Interact()
@@ -55,7 +58,8 @@ public class InteractiveGameObject : MonoBehaviour, IInteractible
     {
         if (IsInteractableBy(InteractionMethod.Key))
         {
-            if (Vector3.Distance(transform.position, PlayerObject.transform.position) <= triggerRadius)
+            float distance = networkProximityChecker.DistanceToLocalConn();
+            if (distance >= 0 && distance <= triggerRadius)
             {
                 foreach (var keyCode in GetTriggerKeys())
                 {
@@ -75,7 +79,8 @@ public class InteractiveGameObject : MonoBehaviour, IInteractible
     {
         if (IsInteractableBy(InteractionMethod.Mouse))
         {
-            if (Vector3.Distance(transform.position, PlayerObject.transform.position) <= triggerRadius)
+            float distance = networkProximityChecker.DistanceToLocalConn();
+            if (distance >= 0 && distance <= triggerRadius)
             {
                 Interact();
             }
