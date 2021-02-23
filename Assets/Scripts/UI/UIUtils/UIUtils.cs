@@ -9,7 +9,7 @@ public class UIUtils : MonoBehaviour
 {
 
     private UIBehaviour uiBehaviour;
-    private bool _visible = false;
+    private bool _visible = true;
 
     protected void Awake()
     {
