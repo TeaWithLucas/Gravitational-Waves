@@ -23,7 +23,7 @@ public class UIUtils : MonoBehaviour
     {
         _visible = !_visible;
 
-        uiBehaviour.enabled = _visible;
+        uiBehaviour.gameObject.SetActive(_visible);
     }
 
     public void RotateZBy(float degrees, float duration)
