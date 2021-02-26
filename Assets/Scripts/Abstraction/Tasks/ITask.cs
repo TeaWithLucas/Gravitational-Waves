@@ -1,17 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
 
+
 public interface ITask
 {
-    bool IsTaskCompleted();
-    bool IsTaskInProgress();
+    bool IsCompleted();
+    bool IsInProgress();
+
+    string GetTitle();
+    string GetDescription();
+    int GetRewardScore();
+
+
     void CompleteTask();
-
-
-    string GetTaskTitle();
-    string GetTaskDescription();
-
-    int GetRewardTaskScore();
-
-
 }
