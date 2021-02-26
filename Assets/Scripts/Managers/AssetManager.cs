@@ -14,6 +14,7 @@ namespace Game.Managers {
         public static List<Sprite> Sprites { get; private set; }
         public static List<TMP_FontAsset> Fonts { get; private set; }
         public static List<TextAsset> Texts { get; private set; }
+        public static List<GameObject> Prefabs { get; private set; }
 
 
         public static bool Ready { get; private set; }
@@ -23,13 +24,13 @@ namespace Game.Managers {
             Sprites = new List<Sprite>();
             Fonts = new List<TMP_FontAsset>();
             Texts = new List<TextAsset>();
-            
+            Prefabs = new List<GameObject>();
+
             InitTextures();
             InitAllSprites();
             InitFontAssets();
             InitTextAssets();
-
-
+            InitPrefabAssets();
 
             Ready = true;
 
@@ -95,6 +96,17 @@ namespace Game.Managers {
             Debug.LogFormat("Texts: {0}", log.Commaise());
         }
 
+        private static void InitPrefabAssets() {
+            List<string> log = new List<string>();
+            List<GameObject> prefabs = new List<GameObject>();
+            prefabs.AddRange(Resources.LoadAll<GameObject>("Prefabs").Cast<GameObject>().ToList());
+            foreach (GameObject asset in prefabs) {
+                log.Add(asset.name);
+                Prefabs.Add(asset);
+            }
+            Debug.LogFormat("Prefabs: {0}", log.Commaise());
+        }
+
         public static Texture2D Texture(string name) {
             if (!Textures.Any(x => x.name.ToLower() == name.ToLower())) {
                 Debug.LogWarningFormat("No Texture Found Named: {0}", name);
@@ -128,6 +140,13 @@ namespace Game.Managers {
                 Debug.LogWarningFormat("No Font Found Named: {0}", name);
             }
             return Texts.DefaultIfEmpty(Texts[0]).FirstOrDefault(x => x.name.ToLower() == name.ToLower());
+        }
+
+        public static GameObject Prefab(string name) {
+            if (!Prefabs.Any(x => x.name.ToLower() == name.ToLower())) {
+                Debug.LogWarningFormat("No Font Found Named: {0}", name);
+            }
+            return Prefabs.DefaultIfEmpty(Prefabs[0]).FirstOrDefault(x => x.name.ToLower() == name.ToLower());
         }
 
         public static string Assets() {

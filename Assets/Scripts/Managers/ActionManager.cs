@@ -32,6 +32,8 @@ namespace Game.Managers {
 
         public static bool Ready { get; private set; }
 
+        public static void Load() { }
+
 
         static ActionManager() {
             Debug.Log("Loading ActionManager");

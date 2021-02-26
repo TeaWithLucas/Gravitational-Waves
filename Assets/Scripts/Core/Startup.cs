@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
 using Game.Managers;
+using System;
 
 namespace Game.Core {
 
@@ -24,6 +25,12 @@ namespace Game.Core {
             MySceneManager.Load();
             CameraManager.Load();
             InputManager.Load();
+
+            ActionManager.Load();
+            PlayerManager.Load();
+            TeamManager.Load();
+
+            NetworkManager.Load();
 
             Debug.Log("Finished Manager Loading");
         }
