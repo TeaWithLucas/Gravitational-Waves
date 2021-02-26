@@ -4,16 +4,13 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-[RequireComponent(typeof(UIBehaviour))]
 public class UIUtils : MonoBehaviour
 {
 
-    private UIBehaviour uiBehaviour;
     private bool _visible = true;
 
     protected void Awake()
     {
-        uiBehaviour = GetComponent<UIBehaviour>();
     }
 
     /// <summary>
@@ -23,7 +20,7 @@ public class UIUtils : MonoBehaviour
     {
         _visible = !_visible;
 
-        uiBehaviour.gameObject.SetActive(_visible);
+        gameObject.SetActive(_visible);
     }
 
     public void RotateZBy(float degrees, float duration)
