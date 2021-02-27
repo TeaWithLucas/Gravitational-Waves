@@ -15,6 +15,7 @@ namespace Game.Managers {
         static PlayerManager() {
             Debug.Log("Loading PlayerManager");
             LocalPlayer = new Player("Test Player");
+            onPlayerUpdate = new UnityEvent();
             Ready = true;
         }
 

@@ -14,11 +14,15 @@ namespace Game.Players {
 
 
         public List<Task> AssignedTasks { get; private set; }
+        public string Description { get; internal set; }
+        public string Thumbnail { get; internal set; }
 
         public int numberOfTasks = SettingsManager.taskDefaultNumber;
 
         public Player(string name = "player") {
             Name = name;
+            Description = "Player Description";
+            Thumbnail = "gravitationalwaves";
             AssignedTasks = new List<Task>();
             IsHost = false;
             PlayerManager.AssignRandomTasks(this);

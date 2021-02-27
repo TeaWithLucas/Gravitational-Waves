@@ -1,3 +1,4 @@
+using Game.Tasks;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -12,31 +13,34 @@ public enum InteractionMethod
 
 [RequireComponent(typeof(SphereCollider))]
 [RequireComponent(typeof(NetworkProximityFinder))]
-public class InteractiveGameObject : MonoBehaviour, IInteractible
-{
+public class InteractionListener : MonoBehaviour, IInteractible { 
 
     [Tooltip("Toggle whether this Game Object can be interacted with.")]
     public bool IsInteractionAllowed = true;
 
     [Tooltip("Whether the interaction can be triggered by entering the sphere trigger.")]
-    public bool CanTriggerByProximity;
+    public bool CanTriggerByProximity = false;
 
     public float triggerRadius = 5f;
 
     [Tooltip("Whether the interaction can be triggered by mouse click.")]
-    public bool CanTriggerByMouse;
+    public bool CanTriggerByMouse = true;
 
     [Tooltip("Whether the interaction can be triggered by key press.")]
-    public bool CanTriggerByKeys;
+    public bool CanTriggerByKeys = true;
 
     [Tooltip("The keys by which the interaction can be triggered.")]
-    public List<KeyCode> triggerKeys;
+    public List<KeyCode> TriggerKeys = new List<KeyCode> { KeyCode.F };
 
-    public UnityEvent OnInteraction;
+    public UnityEvent OnInteraction { get; set; }
 
     private SphereCollider sphereCollider;
 
     private NetworkProximityFinder networkProximityChecker;
+
+    public void OnEnable() {
+        OnInteraction = new UnityEvent();
+    }
 
     public void Start()
     {
@@ -46,12 +50,8 @@ public class InteractiveGameObject : MonoBehaviour, IInteractible
         networkProximityChecker = transform.GetComponent<NetworkProximityFinder>();
     }
 
-    public void Interact()
-    {
-        if (OnInteraction.GetPersistentEventCount() > 0)
-        {
-            OnInteraction.Invoke();
-        }
+    public void Interact() {
+        OnInteraction?.Invoke();
     }
 
     public void Update()
@@ -63,8 +63,7 @@ public class InteractiveGameObject : MonoBehaviour, IInteractible
             {
                 foreach (var keyCode in GetTriggerKeys())
                 {
-                    if (Input.GetKeyDown(keyCode))
-                    {
+                    if (Input.GetKeyDown(keyCode)) {
                         Interact();
                         break;
                     }
@@ -93,7 +92,7 @@ public class InteractiveGameObject : MonoBehaviour, IInteractible
     /// <returns>The list of keys.</returns>
     public List<KeyCode> GetTriggerKeys()
     {
-        return triggerKeys;
+        return TriggerKeys;
     }
 
     /// <summary>
@@ -101,9 +100,7 @@ public class InteractiveGameObject : MonoBehaviour, IInteractible
     /// </summary>
     /// <param name="interactionMethod">The specified interaction method.</param>
     /// <returns>True - if the object can be interacted with by the specified method | False - otherwise.</returns>
-    public bool IsInteractableBy(InteractionMethod interactionMethod)
-    {
-        if (!IsInteractionAllowed) return false;
+    public bool IsInteractableBy(InteractionMethod interactionMethod) {
 
         return interactionMethod switch
         {
@@ -118,12 +115,8 @@ public class InteractiveGameObject : MonoBehaviour, IInteractible
     /// When another object with a collider enters the trigger.
     /// </summary>
     /// <param name="other">The other object's collider compontent.</param>
-    private void OnTriggerEnter(Collider other)
-    {
-        if (!IsInteractableBy(InteractionMethod.Trigger)) return;
-
-        if (other.gameObject.CompareTag("Player"))
-        {
+    private void OnTriggerEnter(Collider other) {
+        if (IsInteractableBy(InteractionMethod.Trigger) && other.gameObject.CompareTag("Player")) {
             Interact();
         }
     }

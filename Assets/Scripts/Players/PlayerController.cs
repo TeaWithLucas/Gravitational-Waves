@@ -1,6 +1,7 @@
+using Mirror;
 using UnityEngine;
 
-namespace Mirror.Examples.Additive
+namespace Game.Players
 {
     [RequireComponent(typeof(CapsuleCollider))]
     [RequireComponent(typeof(CharacterController))]
@@ -10,19 +11,16 @@ namespace Mirror.Examples.Additive
     {
         public CharacterController characterController;
 
-        void OnValidate()
-        {
+        void OnValidate() {
             if (characterController == null)
                 characterController = GetComponent<CharacterController>();
         }
 
-        void Start()
-        {
+        void Start() {
             characterController.enabled = isLocalPlayer;
         }
 
-        public override void OnStartLocalPlayer()
-        {
+        public override void OnStartLocalPlayer() {
             Camera.main.orthographic = true;
             Camera.main.transform.SetParent(transform);
             Camera.main.transform.localPosition = new Vector3(0f, 3f, -8f);
@@ -30,8 +28,7 @@ namespace Mirror.Examples.Additive
             Camera.main.transform.localEulerAngles = new Vector3(20f, 0f, 0f);
         }
 
-        void OnDisable()
-        {
+        void OnDisable() {
             if (isLocalPlayer && Camera.main != null)
             {
                 Camera.main.orthographic = true;
@@ -55,8 +52,7 @@ namespace Mirror.Examples.Additive
         public bool isFalling;
         public Vector3 velocity;
 
-        void Update()
-        {
+        void Update() {
             if (!isLocalPlayer || !characterController.enabled)
                 return;
 
@@ -87,8 +83,7 @@ namespace Mirror.Examples.Additive
             }
         }
 
-        void FixedUpdate()
-        {
+        void FixedUpdate() {
             if (!isLocalPlayer || characterController == null)
                 return;
 
