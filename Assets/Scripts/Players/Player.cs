@@ -41,7 +41,7 @@ namespace Game.Players {
         }
 
         public float PercentageTasksComplete() {
-            int tasksComplete = AssignedTasks.Count(x => x.IsCompleted());
+            int tasksComplete = AssignedTasks.Count(x => x.IsCompleted);
             float percentage = ((float)tasksComplete / AssignedTasks.Count()) * 100;
             Debug.LogFormat("Task Completed: {0}/{1} - {2}%", tasksComplete, AssignedTasks.Count(), percentage);
             return percentage;

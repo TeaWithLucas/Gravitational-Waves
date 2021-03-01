@@ -8,8 +8,7 @@ using UnityEngine.UIElements;
 using UnityEngine.UI;
 using System.Linq;
 
-public class UIPlayerTaskList : MonoBehaviour
-{
+public class UIPlayerTaskList : MonoBehaviour {
     private GameObject taskListRowPrefab;
 
     private ScrollRect taskListScrollView;

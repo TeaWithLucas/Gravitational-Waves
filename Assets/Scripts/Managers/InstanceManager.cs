@@ -25,6 +25,7 @@ namespace Game.Managers {
         public static bool Ready { get; private set; }
 
         static InstanceManager() {
+            Init();
             Debug.Log("Loading InstanceManager");
         }
 
@@ -51,7 +52,7 @@ namespace Game.Managers {
             TempStorage.transform.SetParent(Operator.transform);
 
             Canvas = UnityEngine.Object.FindObjectOfType<Canvas>();
-
+            Debug.Log(Canvas);
             CameraManager.Reset();
             InitGameObjects();
 
@@ -96,6 +97,22 @@ namespace Game.Managers {
             obj.name = "Body";
             obj.SetActive(true);
             return obj;
+        }
+
+        public static GameObject DisplayFullscreen(string name) {
+            GameObject prefab = AssetManager.Prefab(name);
+            Transform Fullscreen = Canvas.transform.Find("Fullscreen");
+            Debug.Log(Fullscreen);
+            GameObject instance = GameObject.Instantiate(prefab, Fullscreen);
+            return instance;
+        }
+
+        public static GameObject DisplayWindow(string name) {
+            GameObject prefab = AssetManager.Prefab(name);
+            Transform Windows = Canvas.transform.Find("Windows Section");
+            Debug.Log(Windows);
+            GameObject instance = GameObject.Instantiate(prefab, Windows);
+            return instance;
         }
     }
 }

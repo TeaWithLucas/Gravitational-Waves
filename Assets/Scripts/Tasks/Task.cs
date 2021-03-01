@@ -6,57 +6,74 @@ using UnityEngine;
 namespace Game.Tasks {
     [Serializable]
     public abstract class Task : ITask {
-        protected bool _isInProgress = false;
-        protected bool _isCompleted = false;
-        protected string _id;
-        protected string _title;
-        protected string _description;
-        protected int _rewardScore;
-        protected Task parent;
+        public bool IsInProgress { get; protected set; }
+        public bool IsCompleted { get; protected set; }
+        public string Id { get; protected set; }
+        public string Title { get; protected set; }
+        public string Description { get; protected set; }
+        public string Prefab { get; protected set; }
+        public int RewardScore { get; protected set; }
+        public Task Parent { get; protected set; }
 
-        public Task(string id, string title, string description, int rewardScore) {
-            _id = id;
-            _title = title;
-            _description = description;
-            _rewardScore = rewardScore;
+        public Task(string id, string title, string description, string prefab, int rewardScore) {
+            Id = id;
+            Title = title;
+            Description = description;
+            Prefab = prefab;
+            RewardScore = rewardScore;
+            defaults();
         }
 
         public Task(Task task) {
-            parent = task;
-            _id = task._id;
-            _title = task._title;
-            _description = task._description;
-            _rewardScore = task._rewardScore;
+            Parent = task;
+            Id = task.Id;
+            Title = task.Title;
+            Description = task.Description;
+            Prefab = task.Prefab;
+            RewardScore = task.RewardScore;
+            defaults();
+        }
+
+        private void defaults() {
+            IsInProgress = false;
+            IsCompleted = false;
         }
 
         public abstract Task Clone();
 
-        public void CompleteTask() {
-            _isCompleted = true;
+        public void Complete(bool value = true) {
+            if (value) {
+                Debug.LogFormat("Task {0} Completed!", Title);
+                IsInProgress = false;
+            } else {
+                Debug.LogFormat("Task {0} reset", Title);
+            }
+            IsCompleted = value;
         }
 
         internal void ToggleCompleted() {
-            IsCompleted(!_isCompleted);
+            Complete(!IsCompleted);
         }
 
-        public string GetID() => _id;
-
-        public int GetRewardScore() => _rewardScore;
-
-        public string GetDescription() => _description;
-
-        public string GetTitle() => _title;
-
-        public bool IsCompleted() => _isCompleted;
-
-        public void IsCompleted(bool value) {
-            _isCompleted = value;
+        internal void Started(bool value = true) {
+            if (value) {
+                Debug.LogFormat("Task {0} started!", Title);
+            } else {
+                Debug.LogFormat("Task {0} no longer started", Title);
+            }
+            IsInProgress = value;
         }
 
-        public bool IsInProgress() => _isInProgress;
+        public string GetID() => Id;
+
+        public int GetRewardScore() => RewardScore;
+
+        public string GetDescription() => Description;
+
+        public string GetTitle() => Title;
 
         public Task GetOrigin() {
-            return parent == null ? this : parent.GetOrigin();
+            return Parent == null ? this : Parent.GetOrigin();
         }
     }
 }

@@ -41,9 +41,6 @@ public class InteractiveTask : MonoBehaviour {
     }
 
     public void Trigger() {
-        List<Task> tasks = PlayerManager.LocalPlayer.AssignedTasks;
-        if (tasks.Any(x => x.GetOrigin() == Task && !x.IsCompleted())) {
-            tasks.First(x => x.GetOrigin() == Task && !x.IsCompleted()).IsCompleted(true);
-        }
+        TaskManager.TriggeredTask(Task);
     }
 }

@@ -54,8 +54,8 @@ public class InteractionListener : MonoBehaviour, IInteractible {
         OnInteraction?.Invoke();
     }
 
-    public void Update()
-    {
+    public void Update() {
+
         if (IsInteractableBy(InteractionMethod.Key))
         {
             float distance = networkProximityChecker.DistanceToLocalConn();
@@ -64,6 +64,7 @@ public class InteractionListener : MonoBehaviour, IInteractible {
                 foreach (var keyCode in GetTriggerKeys())
                 {
                     if (Input.GetKeyDown(keyCode)) {
+                        Debug.LogFormat("Key {0} triggered", keyCode);
                         Interact();
                         break;
                     }

@@ -44,7 +44,7 @@ public class UITaskRow : MonoBehaviour {
         SetColor();
     }
     public void SetColor() {
-        if (Task.IsCompleted()) {
+        if (Task.IsCompleted) {
             image.color = new Color(0.5f, 0.5f, 0.5f);
         } else {
             image.color = new Color(0.397f, 0.376f, 0.458f, 0.7f);
