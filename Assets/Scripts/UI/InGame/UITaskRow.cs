@@ -36,7 +36,7 @@ public class UITaskRow : MonoBehaviour {
 
     public void ToggleTask() {
         Task.ToggleCompleted();
-        TaskManager.onTaskUpdate?.Invoke();
+        TaskManager.TaskUpdated();
     }
 
     internal void Update() {

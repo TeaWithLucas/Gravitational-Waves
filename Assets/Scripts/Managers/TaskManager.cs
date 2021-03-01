@@ -5,6 +5,7 @@ using Game.Tasks;
 using System.Collections.Generic;
 using UnityEngine.Events;
 using System.Linq;
+using Game.Teams;
 
 namespace Game.Managers {
     public static class TaskManager {
@@ -19,10 +20,10 @@ namespace Game.Managers {
         static TaskManager() {
             Debug.Log("Loading TaskManager");
             Tasks = new List<Task>() {
-                new StandardTask("MirrorCleaning", "Mirror Cleaning", "Clean those mirrors, fool!", "Mirror Cleaning Task", 100),
-                new StandardTask("Laserpointer", "Laser pointer", "Point da lazor to the right place!", "Mirror Cleaning Task", 50),
-                new StandardTask("EasterCrow", "Easter Crow", "Chirp Chirp", "Mirror Cleaning Task", 100),
-                new StandardTask("HelloWorld", "Hello World", "Say Hi!", "Mirror Cleaning Task", 200),
+                new StandardTask("MirrorCleaning", "Mirror Cleaning", "Clean those mirrors, fool!", "Mirror Cleaning Task", "Reward1"),
+                new StandardTask("Laserpointer", "Laser pointer", "Point da lazor to the right place!", "Mirror Cleaning Task", "Reward2"),
+                new StandardTask("EasterCrow", "Easter Crow", "Chirp Chirp", "Mirror Cleaning Task", "Reward3"),
+                new StandardTask("HelloWorld", "Hello World", "Say Hi!", "Mirror Cleaning Task", "Reward4"),
             };
             onTaskUpdate = new UnityEvent();
             Ready = true;
@@ -56,6 +57,12 @@ namespace Game.Managers {
                 return null;
             }
            
+        }
+
+        public static void TaskUpdated() {
+            onTaskUpdate?.Invoke();
+            PlayerManager.PlayerUpdated();
+            TeamManager.TeamUpdated();
         }
 
     }

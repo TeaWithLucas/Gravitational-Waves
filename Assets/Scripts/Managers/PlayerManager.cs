@@ -3,6 +3,7 @@ using System.Collections;
 using System;
 using Game.Players;
 using UnityEngine.Events;
+using System.Linq;
 
 namespace Game.Managers {
     public static class PlayerManager {
@@ -14,7 +15,7 @@ namespace Game.Managers {
 
         static PlayerManager() {
             Debug.Log("Loading PlayerManager");
-            LocalPlayer = new Player("Test Player");
+            LocalPlayer = new Player("Test Player", TeamManager.Teams.First());
             onPlayerUpdate = new UnityEvent();
             Ready = true;
         }
@@ -22,7 +23,7 @@ namespace Game.Managers {
         public static void Load() { }
 
         public static void AssignRandomTasks(Player player) {
-            for (int i = 0; i < player.numberOfTasks; i++) {
+            for (int i = 0; i < player.NumberOfTasks; i++) {
                 player.AssignTask(TaskManager.GetRandomTask().Clone());
             }
         }
@@ -34,5 +35,9 @@ namespace Game.Managers {
         public static void RemovePlayerUpdateListener(UnityAction action) {
             onPlayerUpdate.RemoveListener(action);
         }
+
+        public static void PlayerUpdated() {
+            onPlayerUpdate?.Invoke();
+        } 
     }
 }

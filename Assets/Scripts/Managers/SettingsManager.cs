@@ -43,13 +43,13 @@ namespace Game.Managers {
         public const float ValueSizeMax = 12;
 
         public static readonly Color ButtonColorStandard = new Color32(233, 206, 129, 255);
-
         public const bool Midpoint = false;
         public const MidpointRounding MidpointRounding = (MidpointRounding)1;
         public const bool RoundDown = true;
 
         public const string taskListRowPrefab = "UITaskListRow";
         public const int taskDefaultNumber = 10;
+        public const int teamsDefaultNumber = 2;
 
         public static bool Ready { get; private set; }
 

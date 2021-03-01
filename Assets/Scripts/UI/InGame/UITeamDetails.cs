@@ -7,11 +7,10 @@ using static Game.UI.UIFunctions;
 using Game.UI.InGame.Sections.Items;
 using Game.Players;
 using Game.Managers;
+using Game.Teams;
 
 namespace Game.UI.InGame.Sections {
-    public class UICurrentPortrait : MonoBehaviour {
-        public GameObject PortraitPanel { get; private set; }
-        public Image Portrait { get; private set; }
+    public class UITeamDetails : MonoBehaviour {
         public GameObject NamePanel { get; private set; }
         public TextMeshProUGUI Name { get; private set; }
         public GameObject DetailsPanel { get; private set; }
@@ -22,20 +21,15 @@ namespace Game.UI.InGame.Sections {
         // Use this for initialization
         void Start() {
             if (!Ready) {
-                Portrait = gameObject.transform.Find("Portrait").Find("Image").GetComponentInChildren<Image>();
-                Portrait.color = new Color(1, 1, 1);
-
 
                 Name = gameObject.transform.Find("Name").GetComponentInChildren<TextMeshProUGUI>();
 
                 Details = gameObject.transform.Find("Details").GetComponentInChildren<TextMeshProUGUI>();
-                UpdateCurrentPlayer();
-                PlayerManager.AddPlayerUpdateListener(UpdateCurrentPlayer);
+                UpdateTeamDetails();
+                TeamManager.AddTeamUpdateListener(UpdateTeamDetails);
 
                 //UpdateCurrentCharacter();
                 Ready = true;
-            } else {
-                Debug.LogWarning("UITurnDisplay Started More than once");
             }
 
         }
@@ -46,12 +40,8 @@ namespace Game.UI.InGame.Sections {
 
         }
 
-        public void SetPortrait(string spriteID) {
-            Portrait.enabled = true;
-            if (spriteID != null) {
-                Portrait.sprite = AssetManager.Sprite(spriteID);
-            }
-
+        private void OnDestroy() {
+            TeamManager.RemoveTeamUpdateListener(UpdateTeamDetails);
         }
 
         public void SetName(string text) {
@@ -65,12 +55,11 @@ namespace Game.UI.InGame.Sections {
             Details.text = string.Format("{0}{1}", SettingsManager.TMPColour.Black, text);
         }
 
-        public void UpdateCurrentPlayer() {
-            if (PlayerManager.LocalPlayer != null) {
-                Player player = PlayerManager.LocalPlayer;
-                SetPortrait(player.Thumbnail);
-                SetName(player.Name);
-                SetDesc(string.Format(player.GetDescription()));
+        public void UpdateTeamDetails() {
+            if (PlayerManager.LocalPlayer != null && PlayerManager.LocalPlayer.Team != null) {
+                Team team = PlayerManager.LocalPlayer.Team;
+                SetName(team.Name);
+                SetDesc(team.GetDescription());
             } 
         }
     }

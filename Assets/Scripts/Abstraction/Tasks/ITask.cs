@@ -6,7 +6,6 @@ public interface ITask
 {
     string GetTitle();
     string GetDescription();
-    int GetRewardScore();
 
     void Complete(bool value = true);
 }
