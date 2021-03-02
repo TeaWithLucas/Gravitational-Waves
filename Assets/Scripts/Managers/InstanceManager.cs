@@ -100,18 +100,20 @@ namespace Game.Managers {
         }
 
         public static GameObject DisplayFullscreen(string name) {
-            GameObject prefab = AssetManager.Prefab(name);
-            Transform Fullscreen = Canvas.transform.Find("Fullscreen");
-            Debug.Log(Fullscreen);
-            GameObject instance = GameObject.Instantiate(prefab, Fullscreen);
-            return instance;
+            return Instantiate(name, Canvas.transform.Find("Fullscreen"));
         }
 
         public static GameObject DisplayWindow(string name) {
-            GameObject prefab = AssetManager.Prefab(name);
-            Transform Windows = Canvas.transform.Find("Windows Section");
-            Debug.Log(Windows);
-            GameObject instance = GameObject.Instantiate(prefab, Windows);
+            return Instantiate(name, Canvas.transform.Find("Windows Section"));
+        }
+
+        internal static GameObject Instantiate(string prefabID, GameObject parent) {
+            return Instantiate(prefabID, parent.transform);
+        }
+
+        internal static GameObject Instantiate(string prefabID, Transform parent) {
+            GameObject prefab = AssetManager.Prefab(prefabID);
+            GameObject instance = GameObject.Instantiate(prefab, parent);
             return instance;
         }
     }

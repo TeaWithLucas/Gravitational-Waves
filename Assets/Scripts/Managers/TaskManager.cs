@@ -33,10 +33,9 @@ namespace Game.Managers {
             Debug.LogFormat("Task {0} triggered", task.Title);
             if (PlayerManager.LocalPlayer.AssignedTasks.Any(x => x.GetOrigin() == task && !x.IsCompleted)) {
                 Task playerTask = PlayerManager.LocalPlayer.AssignedTasks.First(x => x.GetOrigin() == task && !x.IsCompleted);
-                GameObject taskUI  = InstanceManager.DisplayFullscreen(playerTask.Prefab);
-                ITaskPrefab taskPrefab = taskUI.GetComponent<ITaskPrefab>();
+                GameObject taskUI  = InstanceManager.DisplayFullscreen("Task UI Framework");
+                TaskWindow taskPrefab = taskUI.GetComponent<TaskWindow>();
                 taskPrefab.SetTask(playerTask);
-                playerTask.Started();
             }
         }
 
