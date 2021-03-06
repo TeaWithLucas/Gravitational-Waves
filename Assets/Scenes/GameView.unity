@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 1756505682}
-  m_IndirectSpecularColor: {r: 0.25075403, g: 0.3129436, b: 0.36807668, a: 1}
+  m_IndirectSpecularColor: {r: 0.25075352, g: 0.31294346, b: 0.36807644, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -233,13 +233,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 534669902}
-  m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 70, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &606925855
 GameObject:
   m_ObjectHideFlags: 0
@@ -448,7 +448,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2205684736303213884, guid: 066a07f91e0b1a141a3677e5fd229d8a, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -55.705
+      value: -55.704956
       objectReference: {fileID: 0}
     - target: {fileID: 2786156009896559140, guid: 066a07f91e0b1a141a3677e5fd229d8a, type: 3}
       propertyPath: m_AnchorMax.y
@@ -473,6 +473,14 @@ PrefabInstance:
     - target: {fileID: 2786156009896559140, guid: 066a07f91e0b1a141a3677e5fd229d8a, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3304291917254755636, guid: 066a07f91e0b1a141a3677e5fd229d8a, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -16.200012
+      objectReference: {fileID: 0}
+    - target: {fileID: 3304291917254755636, guid: 066a07f91e0b1a141a3677e5fd229d8a, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -14.899994
       objectReference: {fileID: 0}
     - target: {fileID: 5410927242531584598, guid: 066a07f91e0b1a141a3677e5fd229d8a, type: 3}
       propertyPath: m_AnchoredPosition.x
@@ -557,6 +565,14 @@ PrefabInstance:
     - target: {fileID: 5882532155805418259, guid: 066a07f91e0b1a141a3677e5fd229d8a, type: 3}
       propertyPath: m_Name
       value: PlayerUICanvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 5882532155805418260, guid: 066a07f91e0b1a141a3677e5fd229d8a, type: 3}
+      propertyPath: m_Camera
+      value: 
+      objectReference: {fileID: 534669904}
+    - target: {fileID: 5882532155805418260, guid: 066a07f91e0b1a141a3677e5fd229d8a, type: 3}
+      propertyPath: m_RenderMode
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5882532155805418263, guid: 066a07f91e0b1a141a3677e5fd229d8a, type: 3}
       propertyPath: m_Pivot.x
@@ -689,6 +705,10 @@ PrefabInstance:
     - target: {fileID: 6246462142008478604, guid: 066a07f91e0b1a141a3677e5fd229d8a, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6975957622217698291, guid: 066a07f91e0b1a141a3677e5fd229d8a, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -23.115799
       objectReference: {fileID: 0}
     - target: {fileID: 7175796227761971844, guid: 066a07f91e0b1a141a3677e5fd229d8a, type: 3}
       propertyPath: m_IsActive
