@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -42,6 +43,16 @@ public class KeycardTask : MonoBehaviour
             _inputCode.text = "Failed";
             StartCoroutine(ResetCode());
         }
+    }
+
+    private IEnumerator ResetCode()
+    {
+        _isResetting = true;
+
+        yield return new WaitForSeconds(_codeResetTimeInSeconds);
+
+        _inputCode.text = string.Empty;
+        _isResetting = false;
     }
 
 
