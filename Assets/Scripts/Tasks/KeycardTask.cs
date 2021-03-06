@@ -37,7 +37,12 @@ public class KeycardTask : MonoBehaviour
             _inputCode.text = "Correct";
             StartCoroutine(ResetCode());
         }
-        
+        else if (_inputCode.text.Length > _codeLength)
+        {
+            _inputCode.text = "Failed";
+            StartCoroutine(ResetCode());
+        }
     }
+
 
 }
