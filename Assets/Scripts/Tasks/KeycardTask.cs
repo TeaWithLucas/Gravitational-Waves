@@ -4,13 +4,17 @@ using UnityEngine.UI;
 
 public class KeycardTask : MonoBehaviour
 {
+    [SerializeField]
     protected Text _inputCode;
 
+    [SerializeField]
     protected Text _cardCode;
 
-    protected static int _codeLength = 5;
+    [SerializeField]
+    protected int _codeLength = 5;
 
-    protected static float _codeResetTimeInSeconds = 0.5f;
+    [SerializeField]
+    protected float _codeResetTimeInSeconds = 0.5f;
 
     private bool _isResetting = false;
 
