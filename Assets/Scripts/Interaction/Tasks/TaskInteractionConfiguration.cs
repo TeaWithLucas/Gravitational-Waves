@@ -15,7 +15,15 @@ public class TaskInteractionConfiguration : MonoBehaviour
 
 
     private InteractiveGameObject interactiveComponent;
-   
+
+    private GameObject TaskUIFramework;
+
+    private void Awake()
+    {
+        TaskUIFramework = GameObject.FindGameObjectWithTag("TaskUIFramework");
+
+        TaskUIFramework.SetActive(false);
+    }
     void Start()
     {
 
@@ -28,7 +36,14 @@ public class TaskInteractionConfiguration : MonoBehaviour
         interactiveComponent.CanTriggerByKeys = CanTriggerByKeys;
         interactiveComponent.CanTriggerByMouse = CanTriggerByMouse;
         interactiveComponent.CanTriggerByProximity = CanTriggerByProximity;
+
+        interactiveComponent.OnInteraction.AddListener(OnTaskInteraction);
         
+    }
+    void OnTaskInteraction()
+    {
+
+        TaskUIFramework.SetActive(true);
     }
 
     // Update is called once per frame

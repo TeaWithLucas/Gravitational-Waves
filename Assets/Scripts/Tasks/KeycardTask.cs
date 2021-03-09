@@ -18,6 +18,14 @@ public class KeycardTask : MonoBehaviour
 
     private bool _isResetting = false;
 
+    private GameObject TaskUIFramework;
+
+    private void Awake()
+    {
+        TaskUIFramework = GameObject.FindGameObjectWithTag("TaskUIFramework");
+        
+    }
+
     private void OnEnable()
     {
         string code = string.Empty;
@@ -38,9 +46,10 @@ public class KeycardTask : MonoBehaviour
         _inputCode.text += number;
 
         if (_inputCode.text == _cardCode.text)
-        {
+        { 
             _inputCode.text = "Correct";
-            StartCoroutine(ResetCode());
+            TaskUIFramework.SetActive(false);
+
         }
         else if (_inputCode.text.Length > _codeLength)
         {

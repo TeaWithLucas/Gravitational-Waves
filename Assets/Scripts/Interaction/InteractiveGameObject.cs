@@ -32,7 +32,7 @@ public class InteractiveGameObject : MonoBehaviour, IInteractible
     [Tooltip("The keys by which the interaction can be triggered.")]
     public List<KeyCode> triggerKeys;
 
-    public UnityEvent OnInteraction;
+    public UnityEvent OnInteraction = new UnityEvent(); 
 
     private SphereCollider sphereCollider;
 
@@ -48,10 +48,9 @@ public class InteractiveGameObject : MonoBehaviour, IInteractible
 
     public void Interact()
     {
-        if (OnInteraction.GetPersistentEventCount() > 0)
-        {
-            OnInteraction.Invoke();
-        }
+        
+         OnInteraction.Invoke();
+
     }
 
     public void Update()
