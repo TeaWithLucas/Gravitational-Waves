@@ -349,6 +349,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: FullSuit
       objectReference: {fileID: 0}
+    - target: {fileID: 5866666021909216657, guid: cc35314ac76d28945895b4c6e97a27ad, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: c03d1cdc0e91b324295ad66ea3d421c7, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cc35314ac76d28945895b4c6e97a27ad, type: 3}
 --- !u!1 &1558629703
