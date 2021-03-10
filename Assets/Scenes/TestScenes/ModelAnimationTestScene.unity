@@ -259,7 +259,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 52a2e2533a9e1cd43b35b2b9ff483eef, type: 3}
       propertyPath: m_Name
-      value: Breathing Idle
+      value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 5866666021909216657, guid: 52a2e2533a9e1cd43b35b2b9ff483eef, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 786c114f0bc751f4c8addea87bad8fd8, type: 2}
+    - target: {fileID: 5866666021909216657, guid: 52a2e2533a9e1cd43b35b2b9ff483eef, type: 3}
+      propertyPath: m_UpdateMode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5866666021909216657, guid: 52a2e2533a9e1cd43b35b2b9ff483eef, type: 3}
+      propertyPath: m_CullingMode
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 52a2e2533a9e1cd43b35b2b9ff483eef, type: 3}
@@ -356,3 +368,26 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
+--- !u!1 &1525410196 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 52a2e2533a9e1cd43b35b2b9ff483eef, type: 3}
+  m_PrefabInstance: {fileID: 455851366}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &1525410197 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 5866666021909216657, guid: 52a2e2533a9e1cd43b35b2b9ff483eef, type: 3}
+  m_PrefabInstance: {fileID: 455851366}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1525410198
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1525410196}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 537ca21e6a4238f479189ede40dbc3cc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animator: {fileID: 1525410197}
