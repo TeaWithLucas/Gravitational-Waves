@@ -44,8 +44,8 @@ Transform:
   - {fileID: 8524611004387090970}
   - {fileID: 5886568204805830594}
   - {fileID: 4105073726002004041}
-  - {fileID: 9096601228867493635}
   - {fileID: 98707791164482320}
+  - {fileID: 9096601228867493635}
   - {fileID: 7914551482130281376}
   - {fileID: 726065449067068588}
   m_Father: {fileID: 0}
@@ -116,7 +116,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 39eb22f548a010c41862ed2c78f6ba60, type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 39eb22f548a010c41862ed2c78f6ba60, type: 3}
       propertyPath: m_LocalScale.x
@@ -170,6 +170,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 39eb22f548a010c41862ed2c78f6ba60, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 5d69df9d9d11e49d110086ba44295342, type: 2}
     - target: {fileID: 919132149155446097, guid: 39eb22f548a010c41862ed2c78f6ba60, type: 3}
       propertyPath: m_Name
       value: HAM Inner Tube
@@ -249,6 +253,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 82ff4d9be16989242b728f3ee60bfb0a, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 5d69df9d9d11e49d110086ba44295342, type: 2}
     - target: {fileID: 919132149155446097, guid: 82ff4d9be16989242b728f3ee60bfb0a, type: 3}
       propertyPath: m_Name
       value: HAM2 Interior
@@ -318,6 +326,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 73130134af5c9b148b529e63bdd33a66, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 5d69df9d9d11e49d110086ba44295342, type: 2}
     - target: {fileID: 919132149155446097, guid: 73130134af5c9b148b529e63bdd33a66, type: 3}
       propertyPath: m_Name
       value: Beam Input Tubes Part 2
@@ -483,6 +495,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: aea2b3b9004a761478f56d26ef5543da, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 5d69df9d9d11e49d110086ba44295342, type: 2}
     - target: {fileID: 919132149155446097, guid: aea2b3b9004a761478f56d26ef5543da, type: 3}
       propertyPath: m_Name
       value: HAM3 Interior
@@ -506,7 +522,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3890393670160470835, guid: 6888b45c93d63f849a6a5b0ca98cfc63, type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 3890393670160470835, guid: 6888b45c93d63f849a6a5b0ca98cfc63, type: 3}
       propertyPath: m_LocalPosition.x
@@ -638,6 +654,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 46bd45c9d7e347a4bb5ac19b5be7c84d, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 5d69df9d9d11e49d110086ba44295342, type: 2}
     - target: {fileID: 919132149155446097, guid: 46bd45c9d7e347a4bb5ac19b5be7c84d, type: 3}
       propertyPath: m_Name
       value: Beam Input Tubes Part 1
@@ -779,6 +799,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 644c5f858a916674c8d417eb075872a0, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 5d69df9d9d11e49d110086ba44295342, type: 2}
     - target: {fileID: 919132149155446097, guid: 644c5f858a916674c8d417eb075872a0, type: 3}
       propertyPath: m_Name
       value: Beam Input Tubes Join
@@ -858,6 +882,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: f315e9f1c3545d7488a8ece791f660f0, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 5d69df9d9d11e49d110086ba44295342, type: 2}
     - target: {fileID: 919132149155446097, guid: f315e9f1c3545d7488a8ece791f660f0, type: 3}
       propertyPath: m_Name
       value: HAM1 Cap

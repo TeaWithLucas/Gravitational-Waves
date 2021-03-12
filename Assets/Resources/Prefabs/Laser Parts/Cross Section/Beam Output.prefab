@@ -232,6 +232,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 39eb22f548a010c41862ed2c78f6ba60, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 5d69df9d9d11e49d110086ba44295342, type: 2}
     - target: {fileID: 919132149155446097, guid: 39eb22f548a010c41862ed2c78f6ba60, type: 3}
       propertyPath: m_Name
       value: HAM Inner Tube
@@ -317,6 +321,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 47756249659296150}
     m_Modifications:
+    - target: {fileID: 2588031565312409072, guid: 6888b45c93d63f849a6a5b0ca98cfc63, type: 3}
+      propertyPath: m_RootOrder
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3178482618891074964, guid: 6888b45c93d63f849a6a5b0ca98cfc63, type: 3}
+      propertyPath: m_RootOrder
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 3890393670160470835, guid: 6888b45c93d63f849a6a5b0ca98cfc63, type: 3}
       propertyPath: m_RootOrder
       value: 6
@@ -361,9 +373,25 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4777321783692355445, guid: 6888b45c93d63f849a6a5b0ca98cfc63, type: 3}
+      propertyPath: m_RootOrder
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 4805245436787250720, guid: 6888b45c93d63f849a6a5b0ca98cfc63, type: 3}
+      propertyPath: m_RootOrder
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 5176583806493693095, guid: 6888b45c93d63f849a6a5b0ca98cfc63, type: 3}
       propertyPath: m_Name
       value: HAM6
+      objectReference: {fileID: 0}
+    - target: {fileID: 6529954014579141721, guid: 6888b45c93d63f849a6a5b0ca98cfc63, type: 3}
+      propertyPath: m_RootOrder
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 6611420711001874284, guid: 6888b45c93d63f849a6a5b0ca98cfc63, type: 3}
+      propertyPath: m_RootOrder
+      value: 7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6888b45c93d63f849a6a5b0ca98cfc63, type: 3}
@@ -435,6 +463,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 644c5f858a916674c8d417eb075872a0, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 5d69df9d9d11e49d110086ba44295342, type: 2}
     - target: {fileID: 919132149155446097, guid: 644c5f858a916674c8d417eb075872a0, type: 3}
       propertyPath: m_Name
       value: Beam Input Tubes Join
@@ -514,6 +546,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 73130134af5c9b148b529e63bdd33a66, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 5d69df9d9d11e49d110086ba44295342, type: 2}
     - target: {fileID: 919132149155446097, guid: 73130134af5c9b148b529e63bdd33a66, type: 3}
       propertyPath: m_Name
       value: Beam Input Tubes Part 2
@@ -593,6 +629,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: f315e9f1c3545d7488a8ece791f660f0, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 5d69df9d9d11e49d110086ba44295342, type: 2}
     - target: {fileID: 919132149155446097, guid: f315e9f1c3545d7488a8ece791f660f0, type: 3}
       propertyPath: m_Name
       value: HAM1 Cap
@@ -667,6 +707,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 46bd45c9d7e347a4bb5ac19b5be7c84d, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 5d69df9d9d11e49d110086ba44295342, type: 2}
     - target: {fileID: 919132149155446097, guid: 46bd45c9d7e347a4bb5ac19b5be7c84d, type: 3}
       propertyPath: m_Name
       value: Beam Input Tubes Part 1

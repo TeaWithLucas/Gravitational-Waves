@@ -2419,7 +2419,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: 3b5bed6f19514ab4684d6e2a99aef118, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 8d0b4475c38df4240b5c2aba4d0f9182, type: 2}
+      objectReference: {fileID: 2100000, guid: e75eb513962b3d042b8333dba21f4451, type: 2}
     - target: {fileID: -7511558181221131132, guid: 3b5bed6f19514ab4684d6e2a99aef118, type: 3}
       propertyPath: m_Materials.Array.data[1]
       value: 
@@ -2503,6 +2503,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 85df999a5344ca84193bfe45a5904908, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: e75eb513962b3d042b8333dba21f4451, type: 2}
     - target: {fileID: 919132149155446097, guid: 85df999a5344ca84193bfe45a5904908, type: 3}
       propertyPath: m_Name
       value: Building Interior
