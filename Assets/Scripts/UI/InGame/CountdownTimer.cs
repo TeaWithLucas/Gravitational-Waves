@@ -9,30 +9,33 @@ public class CountdownTimer : MonoBehaviour
 
 {
     //delcaring vairiables used for the timer
-    [SerializeField] float currentTime = 0f;
-    [SerializeField] float startingTime = 30f;
+    public float StartingTime = 30f;
+    public float TargetTime = 0f;
+
 
     private TMP_Text countdownText;
+    public float CurrentTime { get; private set; }
 
     // Start is called before the first frame update
-    void Start()
-    {
+    void Start() {
         countdownText = transform.GetComponentInChildren<TMP_Text>();
-        currentTime = startingTime;
+        CurrentTime = StartingTime;
         
     }
 
     // Update is called once per frame
-    void Update()
-    {
-        //decreases the timer by one sec
-        currentTime -= 1 * Time.deltaTime;
-        countdownText.text = currentTime.ToString("0");
+    void Update() {
 
-        if (currentTime <= 0)
-        {
-            currentTime = 0;
+
+        //(Ignore if timer has stopped).
+        if (CurrentTime != TargetTime) {
+            //decreases timer minius one sec
+            float newtime = CurrentTime - Time.deltaTime;
+
+            //if below or equal to the target time, set to the target time, this will stop the timer.
+            CurrentTime = newtime <= TargetTime ? TargetTime : newtime;
+            countdownText.text = CurrentTime.ToString("0");
+            
         }
-
     }
 }
