@@ -1,3 +1,16 @@
-{
-    "Title": "ASD"
-}
+[
+    {
+        "title": "",
+        "description": "",
+        "task_url": "https://",
+        "correct_answer": "A",
+        "reward": 1
+    },
+    {
+        "title": "",
+        "description": "",
+        "task_url": "https://",
+        "correct_answer": "259867",
+        "reward": 5
+    }
+]
