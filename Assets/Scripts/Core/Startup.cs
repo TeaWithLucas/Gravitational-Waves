@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEditor;
 using Game.Managers;
 using System;
+using System.Threading.Tasks;
 
 namespace Game.Core {
 
@@ -15,7 +16,7 @@ namespace Game.Core {
         }
 
         [RuntimeInitializeOnLoadMethod]
-        static void OnRuntimeMethodLoad() {
+        static async Task OnRuntimeMethodLoad() {
             Debug.Log("Starting Manager Loading");
             SettingsManager.Load();
             AssetManager.Load();
@@ -28,6 +29,7 @@ namespace Game.Core {
 
             ActionManager.Load();
             PlayerManager.Load();
+            await TaskManager.LoadAsync();
             TeamManager.Load();
 
             NetworkManager.Load();

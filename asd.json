@@ -1,5 +1,16 @@
 [
-	{
-
-	}
+    {
+        "title": "ASD",
+        "description": "",
+        "task_url": "https://",
+        "correct_answer": "A",
+        "reward": 1
+    },
+    {
+        "title": "ASD2",
+        "description": "",
+        "task_url": "https://",
+        "correct_answer": "259867",
+        "reward": 5
+    }
 ]

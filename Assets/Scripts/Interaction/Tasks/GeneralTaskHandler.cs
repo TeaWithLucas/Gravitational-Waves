@@ -8,11 +8,13 @@ using UnityEngine;
 
 public static class GenericTaskReader
 {
-    public static List<StandardTask> ReadTasksFromDisk()
+    public async static Task<StandardTask[]> ReadTasksFromDiskAsync()
     {
         using StreamReader file = File.OpenText("./asd.json");
-        JsonSerializer serializer = new JsonSerializer();
-        var tasks = (List<StandardTask>)serializer.Deserialize(file, typeof(List<StandardTask>));
+
+        var jsonString = await file.ReadToEndAsync();
+
+        var tasks = JsonConvert.DeserializeObject<StandardTask[]>(jsonString);
 
         return tasks;  
     }
