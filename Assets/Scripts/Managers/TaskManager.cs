@@ -26,7 +26,9 @@ namespace Game.Managers {
                 new StandardTask("HelloWorld", "Hello World", "Say Hi!", "Mirror Cleaning Task", "Reward4"),
             };
             onTaskUpdate = new UnityEvent();
+            var tasks = GenericTaskReader.ReadTasksFromDisk();
             Ready = true;
+
         }
 
         internal static void TriggeredTask(Task task) {
