@@ -28,7 +28,6 @@ namespace Game.Managers {
                 new StandardTask("HelloWorld", "Hello World", "Say Hi!", "Mirror Cleaning Task", "Reward4"),
             };
             onTaskUpdate = new UnityEvent();
-            var tasks = GenericTaskReader.ReadTasksFromDisk();
             Ready = true;
 
         }
@@ -43,7 +42,11 @@ namespace Game.Managers {
             }
         }
 
-        public static void Load() { }
+        public static async System.Threading.Tasks.Task LoadAsync() {
+            Debug.Log("asd");
+            var tasks = await GenericTaskReader.ReadTasksFromDiskAsync();
+
+        }
 
         public static void AddTaskUpdateListener(UnityAction action) {
             onTaskUpdate.AddListener(action);
