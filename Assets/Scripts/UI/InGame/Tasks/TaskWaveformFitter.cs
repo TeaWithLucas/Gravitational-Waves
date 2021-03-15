@@ -22,9 +22,34 @@ public class TaskWaveformFitter : MonoBehaviour, ITaskPrefab {
     public WaveData PredictedWave { get; private set; }
 
     public bool Ready { get; private set; }
+    public GameObject TotalMassContainer { get; private set; }
+    public Slider TotalMassSlider { get; private set; }
+    public TextMeshProUGUI TotalMassLabel { get; private set; }
+    public GameObject DistanceContainer { get; private set; }
+    public Slider DistanceSlider { get; private set; }
+    public TextMeshProUGUI DistanceLabel { get; private set; }
+
+    public float TotalMassCorrect = 65;
+    public float TotalMassMin = 20;
+    public float TotalMassMax = 100;
+    public float TotalMassStartMin = 30;
+    public float TotalMassStartMax = 90;
+
+    public float DistanceCorrect = 420;
+    public float DistanceMin = 100;
+    public float DistanceMax = 800;
+    public float DistanceStartMin = 200;
+    public float DistanceStartMax = 700;
 
     private void OnEnable() {
         if (!Ready) {
+            TotalMassContainer = transform.Find("Interaction Area").Find("Total Mass").gameObject;
+            TotalMassSlider = TotalMassContainer.GetComponentInChildren<Slider>();
+            TotalMassLabel = TotalMassContainer.transform.Find("Label").GetComponentInChildren<TextMeshProUGUI>();
+
+            DistanceContainer = transform.Find("Interaction Area").Find("Distance").gameObject;
+            DistanceSlider = TotalMassContainer.GetComponentInChildren<Slider>();
+            DistanceLabel = TotalMassContainer.transform.Find("Label").GetComponentInChildren<TextMeshProUGUI>();
 
             CompleteBtn = transform.Find("Button Area").Find("Complete Task Button").GetComponent<Button>();
             LineChart = transform.Find("Graph").GetComponentInChildren<LineChart>();
@@ -65,14 +90,29 @@ public class TaskWaveformFitter : MonoBehaviour, ITaskPrefab {
         rect.offsetMin = new Vector2(left, bottom);
         rect.offsetMax = new Vector2(right, top);
 
+        float initalTotalMass = UnityEngine.Random.Range(TotalMassStartMin, TotalMassStartMax);
+        float initalDistance = UnityEngine.Random.Range(DistanceStartMin, DistanceStartMax);
+
+        initSliders(initalTotalMass, initalDistance);
+
 
         Parent.Task.Started();
 
         ObvservedWave = new WaveData(AssetManager.JSON<List<List<float>>>("dataHanford"));
-        PredictedWave = new WaveData(AssetManager.JSON<List<List<float>>>("NRsim"));
+        PredictedWave = new WaveData(AssetManager.JSON<List<List<float>>>("NRsim"), TotalMassCorrect, DistanceCorrect, initalTotalMass, initalDistance);
 
         addLineToGraph(ObvservedWave, "Data");
         addLineToGraph(PredictedWave, "Predicted");
+    }
+
+    public void initSliders(float initalTotalMass, float initalDistance) {
+        TotalMassSlider.minValue = TotalMassMin;
+        TotalMassSlider.maxValue = TotalMassMax;
+        TotalMassSlider.value = initalTotalMass;
+
+        DistanceSlider.minValue = DistanceMin;
+        DistanceSlider.maxValue = DistanceMax;
+        DistanceSlider.value = initalDistance;
     }
 
     public void addLineToGraph(WaveData wave, string name) {
@@ -84,10 +124,10 @@ public class TaskWaveformFitter : MonoBehaviour, ITaskPrefab {
     }
 
     public void updateMaxMin() {
-        LineChart.xAxis0.min = ObvservedWave.MinX;
-        LineChart.xAxis0.max = ObvservedWave.MaxX;
-        LineChart.yAxis0.min = Mathf.Min(ObvservedWave.MinY, PredictedWave.MinY);
-        LineChart.yAxis0.max = Mathf.Max(ObvservedWave.MaxY, PredictedWave.MaxY);
+        LineChart.xAxis0.min = (float)Math.Round(ObvservedWave.MinX, 2);
+        LineChart.xAxis0.max = (float)Math.Round(ObvservedWave.MaxX, 2);
+        LineChart.yAxis0.min = (float)Math.Round(Mathf.Min(ObvservedWave.MinY, PredictedWave.MinY), 1);
+        LineChart.yAxis0.max = (float)Math.Round(Mathf.Max(ObvservedWave.MaxY, PredictedWave.MaxY), 1);
         LineChart.RefreshChart();
     }
 
@@ -97,6 +137,11 @@ public class TaskWaveformFitter : MonoBehaviour, ITaskPrefab {
         if (true) { //condition
             Parent.CompleteTask();
         }
+    }
+
+    public void SliderChanged(float change) {
+        PredictedWave.scale(TotalMassSlider.value, DistanceSlider.value);
+
     }
 }
 
@@ -119,13 +164,13 @@ public class WaveData {
     public float MinY => Ys.Min();
     public float MaxY => Ys.Max();
 
-    public WaveData(List<List<float>> data, float mass= 65, float dist= 420) {
+    public WaveData(List<List<float>> data, float m0 = 1, float d0 = 1, float mass = 1, float dist = 1) {
         T0 = 0.423f;
-        M0 = mass;
-        D0 = dist;
+        M0 = m0;
+        D0 = d0;
         OrgData = new List<Vector2>();
         OrgData = listToVector(data);
-        scale(M0, D0);
+        scale(mass, dist);
     }
 
     public void shiftt(float t0) {

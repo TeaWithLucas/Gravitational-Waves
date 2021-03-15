@@ -14,14 +14,21 @@ public class UISliderValueText : MonoBehaviour {
     private TextMeshProUGUI tmproText;
     private Slider slider;
 
+    public bool Ready { get; private set; }
+
+    private void OnEnable() {
+        if (!Ready) {
+            tmproText = GetComponent<TextMeshProUGUI>();
+            slider = GetComponentInParent<Slider>();
+
+
+            slider.onValueChanged.AddListener(HandleValueChanged);
+            HandleValueChanged(slider.value);
+        }
+    }
+
     private void Start() {
-        tmproText = GetComponent<TextMeshProUGUI>();
-        slider = GetComponentInParent<Slider>();
 
-
-        slider.onValueChanged.AddListener(HandleValueChanged);
-        HandleValueChanged(slider.value);
-        
     }
 
     private void HandleValueChanged(float value) {
