@@ -41,6 +41,8 @@ public class TaskWaveformFitter : MonoBehaviour, ITaskPrefab {
     public float DistanceStartMin = 200;
     public float DistanceStartMax = 700;
 
+    public float WinConditionPercent = 5;
+
     private void OnEnable() {
         if (!Ready) {
             TotalMassContainer = transform.Find("Interaction Area").Find("Total Mass").gameObject;
@@ -48,8 +50,8 @@ public class TaskWaveformFitter : MonoBehaviour, ITaskPrefab {
             TotalMassLabel = TotalMassContainer.transform.Find("Label").GetComponentInChildren<TextMeshProUGUI>();
 
             DistanceContainer = transform.Find("Interaction Area").Find("Distance").gameObject;
-            DistanceSlider = TotalMassContainer.GetComponentInChildren<Slider>();
-            DistanceLabel = TotalMassContainer.transform.Find("Label").GetComponentInChildren<TextMeshProUGUI>();
+            DistanceSlider = DistanceContainer.GetComponentInChildren<Slider>();
+            DistanceLabel = DistanceContainer.transform.Find("Label").GetComponentInChildren<TextMeshProUGUI>();
 
             CompleteBtn = transform.Find("Button Area").Find("Complete Task Button").GetComponent<Button>();
             LineChart = transform.Find("Graph").GetComponentInChildren<LineChart>();
@@ -69,6 +71,8 @@ public class TaskWaveformFitter : MonoBehaviour, ITaskPrefab {
 
     private void OnDestroy() {
         CompleteBtn.onClick.RemoveAllListeners();
+        TotalMassSlider.onValueChanged.RemoveAllListeners();
+        DistanceSlider.onValueChanged.RemoveAllListeners();
     }
 
     public void SetParent(TaskWindow parent) {
@@ -101,8 +105,12 @@ public class TaskWaveformFitter : MonoBehaviour, ITaskPrefab {
         ObvservedWave = new WaveData(AssetManager.JSON<List<List<float>>>("dataHanford"));
         PredictedWave = new WaveData(AssetManager.JSON<List<List<float>>>("NRsim"), TotalMassCorrect, DistanceCorrect, initalTotalMass, initalDistance);
 
-        addLineToGraph(ObvservedWave, "Data");
-        addLineToGraph(PredictedWave, "Predicted");
+        UpdateLineOnGraph(ObvservedWave, "Data");
+        UpdateLineOnGraph(PredictedWave, "Predicted");
+
+        TotalMassSlider.onValueChanged.AddListener(SliderChanged);
+        DistanceSlider.onValueChanged.AddListener(SliderChanged);
+
     }
 
     public void initSliders(float initalTotalMass, float initalDistance) {
@@ -115,33 +123,61 @@ public class TaskWaveformFitter : MonoBehaviour, ITaskPrefab {
         DistanceSlider.value = initalDistance;
     }
 
-    public void addLineToGraph(WaveData wave, string name) {
-        LineChart.AddSerie(SerieType.Line, name);
+    public void UpdateLineOnGraph(WaveData wave, string name) {
+        Serie line;
+        if(LineChart.series.Contains(name)) {
+            line = LineChart.series.GetSerie(name);
+            line.ClearData();
+        } else {
+            line = LineChart.AddSerie(SerieType.Line, name);
+            line.clip = true;
+        }
+        
+        
         foreach (Vector2 coords in wave.ModData) {
-            LineChart.AddData(name, coords.x, coords.y);
+            line.AddXYData(coords.x, coords.y);
         }
         updateMaxMin();
+        //LineChart.RefreshChart();
     }
 
+
+
     public void updateMaxMin() {
-        LineChart.xAxis0.min = (float)Math.Round(ObvservedWave.MinX, 2);
-        LineChart.xAxis0.max = (float)Math.Round(ObvservedWave.MaxX, 2);
-        LineChart.yAxis0.min = (float)Math.Round(Mathf.Min(ObvservedWave.MinY, PredictedWave.MinY), 1);
-        LineChart.yAxis0.max = (float)Math.Round(Mathf.Max(ObvservedWave.MaxY, PredictedWave.MaxY), 1);
+        LineChart.xAxis0.min = ObvservedWave.MinX; //(float)Math.Round(ObvservedWave.MinX, 2);
+        LineChart.xAxis0.max = ObvservedWave.MaxX; //(float)Math.Round(ObvservedWave.MaxX, 2);
+        LineChart.yAxis0.min = ObvservedWave.MinY*2; //(float)Math.Round(ObvservedWave.MinY, 0, MidpointRounding.AwayFromZero);
+        LineChart.yAxis0.max = ObvservedWave.MaxY*2; //(float)Math.Round(ObvservedWave.MaxY*2, 0, MidpointRounding.AwayFromZero);
         LineChart.RefreshChart();
+    }
+
+    public void RefreshChart() {
+        PredictedWave.scale(TotalMassSlider.value, DistanceSlider.value);
+        UpdateLineOnGraph(PredictedWave, "Predicted");
+    }
+    public bool WinCondition() {
+        float massRange = TotalMassMax - TotalMassMin;
+        float massOffset = massRange * (WinConditionPercent / 100);
+
+        float distanceRange = DistanceMax - DistanceMin;
+        float distanceOffset = distanceRange * (WinConditionPercent / 100);
+
+        bool massCorrect = TotalMassSlider.value >= TotalMassCorrect - massOffset && TotalMassSlider.value <= TotalMassCorrect + massOffset;
+        bool distanceCorrect = DistanceSlider.value >= DistanceCorrect - distanceOffset && DistanceSlider.value <= DistanceCorrect + distanceOffset;
+        Debug.LogFormat("mass win range: +/-{0}, guess: {1}, correct: {2}, distance win range: +/-{3}, guess:{4}, correct: {5}", massOffset, TotalMassSlider.value, massCorrect, DistanceSlider.value, distanceOffset, distanceCorrect);
+        return massCorrect && distanceCorrect;
     }
 
     public void CompleteTask() {
         Debug.LogFormat("Complete button clicked for Task {0}", Parent.Task.Title);
         
-        if (true) { //condition
+        if (WinCondition()) { //condition
             Parent.CompleteTask();
         }
     }
 
     public void SliderChanged(float change) {
-        PredictedWave.scale(TotalMassSlider.value, DistanceSlider.value);
-
+        RefreshChart();
     }
 }
 
@@ -164,7 +200,7 @@ public class WaveData {
     public float MinY => Ys.Min();
     public float MaxY => Ys.Max();
 
-    public WaveData(List<List<float>> data, float m0 = 1, float d0 = 1, float mass = 1, float dist = 1) {
+    public WaveData(List<List<float>> data, float m0 = 65, float d0 = 420, float mass = 65, float dist = 420) {
         T0 = 0.423f;
         M0 = m0;
         D0 = d0;
@@ -193,11 +229,13 @@ public class WaveData {
 
     public void scale(float m, float d) {
         ModData = new List<Vector2>();
-        Debug.LogFormat("scaling from {0} to {1} and from {2} to {3}", M0, m, D0, d);
+        //Debug.LogFormat("scaling from {0} to {1} and from {2} to {3}", M0, m, D0, d);
         Mass = m;
         Dist = d;
         for (int i = 0; i < OrgData.Count; i++) {
-            float xMod = (OrgData[i].x - T0) * M0 / Mass + T0;
+            float xMod = (OrgData[i].x - T0) * Mass / M0 + T0;
+            
+            //float yMod = (OrgData[i].y - T0) * Mass / M0 + T0;
             float yMod = OrgData[i].y * (Mass / M0) * (D0 / Dist);
             ModData.Add(new Vector2(xMod, yMod));
         }
