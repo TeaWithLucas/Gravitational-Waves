@@ -101,11 +101,11 @@ public class TaskRange : MonoBehaviour, ITaskPrefab {
 
         Parent.Task.Started();
 
-        ObvservedWave = new WaveData(AssetManager.JSON<List<List<float>>>("dataHanford"));
-        PredictedWave = new WaveData(AssetManager.JSON<List<List<float>>>("NRsim"), TotalMassCorrect, DistanceCorrect, initalTotalMass, initalDistance);
+        ObvservedWave = new WaveData(AssetManager.JSON<List<List<float>>>("GWINC_aLIGO_asd"));
+        PredictedWave = new WaveData(AssetManager.JSON<List<List<float>>>("GWINC_Aplus_asd"), TotalMassCorrect, DistanceCorrect, initalTotalMass, initalDistance);
 
-        UpdateLineOnGraph(ObvservedWave, "Data");
-        UpdateLineOnGraph(PredictedWave, "Predicted");
+        UpdateLineOnGraph(ObvservedWave, "GWINC_aLIGO_asd");
+        UpdateLineOnGraph(PredictedWave, "GWINC_Aplus_asd");
 
         TotalMassSlider.onValueChanged.AddListener(SliderChanged);
         DistanceSlider.onValueChanged.AddListener(SliderChanged);
@@ -133,8 +133,8 @@ public class TaskRange : MonoBehaviour, ITaskPrefab {
         }
         
         
-        foreach (Vector2 coords in wave.ModData) {
-            line.AddXYData(coords.x, coords.y);
+        foreach (Vector2 coords in wave.OrgData) {
+            line.AddXYData(Mathf.Log10(coords.x), Mathf.Log10(coords.y));
         }
         updateMaxMin();
         //LineChart.RefreshChart();
@@ -143,16 +143,16 @@ public class TaskRange : MonoBehaviour, ITaskPrefab {
 
 
     public void updateMaxMin() {
-        LineChart.xAxis0.min = ObvservedWave.MinX; //(float)Math.Round(ObvservedWave.MinX, 2);
-        LineChart.xAxis0.max = ObvservedWave.MaxX; //(float)Math.Round(ObvservedWave.MaxX, 2);
-        LineChart.yAxis0.min = ObvservedWave.MinY*2; //(float)Math.Round(ObvservedWave.MinY, 0, MidpointRounding.AwayFromZero);
-        LineChart.yAxis0.max = ObvservedWave.MaxY*2; //(float)Math.Round(ObvservedWave.MaxY*2, 0, MidpointRounding.AwayFromZero);
+        LineChart.xAxis0.min = Mathf.Log10(Mathf.Min(ObvservedWave.MinX, PredictedWave.MinX));  //(float)Math.Round(ObvservedWave.MinX, 2);
+        LineChart.xAxis0.max = Mathf.Log10(Mathf.Min(ObvservedWave.MaxX, PredictedWave.MaxX)); //(float)Math.Round(ObvservedWave.MaxX, 2);
+        LineChart.yAxis0.min = Mathf.Log10(Mathf.Min(ObvservedWave.MinY, PredictedWave.MinY))-1; //(float)Math.Round(ObvservedWave.MinY, 0, MidpointRounding.AwayFromZero);
+        LineChart.yAxis0.max = Mathf.Log10(Mathf.Min(ObvservedWave.MaxY, PredictedWave.MaxY))+1; //(float)Math.Round(ObvservedWave.MaxY*2, 0, MidpointRounding.AwayFromZero);
         LineChart.RefreshChart();
     }
 
     public void RefreshChart() {
-        PredictedWave.scale(TotalMassSlider.value, DistanceSlider.value);
-        UpdateLineOnGraph(PredictedWave, "Predicted");
+        //PredictedWave.scale(TotalMassSlider.value, DistanceSlider.value);
+        //UpdateLineOnGraph(PredictedWave, "GWINC_Aplus_asd");
     }
     public bool WinCondition() {
         float massRange = TotalMassMax - TotalMassMin;
