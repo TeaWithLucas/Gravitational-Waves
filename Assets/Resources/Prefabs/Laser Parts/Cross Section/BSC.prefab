@@ -104,7 +104,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: 11bd0150f98c9914fbcd828f2b288085, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 5d69df9d9d11e49d110086ba44295342, type: 2}
+      objectReference: {fileID: 2100000, guid: 3f070b9b51e38424e9597fbb6f473e87, type: 2}
     - target: {fileID: 919132149155446097, guid: 11bd0150f98c9914fbcd828f2b288085, type: 3}
       propertyPath: m_Name
       value: BSC Top Cap
@@ -182,7 +182,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: abbb9744e432fcd43b852df136dee444, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 5d69df9d9d11e49d110086ba44295342, type: 2}
+      objectReference: {fileID: 2100000, guid: 3f070b9b51e38424e9597fbb6f473e87, type: 2}
     - target: {fileID: 919132149155446097, guid: abbb9744e432fcd43b852df136dee444, type: 3}
       propertyPath: m_Name
       value: BSC Interior Top
@@ -260,7 +260,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: 517e3173fbdf33341a543658320ea509, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 5d69df9d9d11e49d110086ba44295342, type: 2}
+      objectReference: {fileID: 2100000, guid: 3f070b9b51e38424e9597fbb6f473e87, type: 2}
     - target: {fileID: 919132149155446097, guid: 517e3173fbdf33341a543658320ea509, type: 3}
       propertyPath: m_Name
       value: BSC Supports Upper
@@ -338,7 +338,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: cefea25c434abe04fbbec3410c68bfb2, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 5d69df9d9d11e49d110086ba44295342, type: 2}
+      objectReference: {fileID: 2100000, guid: 3f070b9b51e38424e9597fbb6f473e87, type: 2}
     - target: {fileID: 919132149155446097, guid: cefea25c434abe04fbbec3410c68bfb2, type: 3}
       propertyPath: m_Name
       value: BSC Door 1
@@ -420,7 +420,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: d052a7fcca821124bb77120b8763b7d1, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 5d69df9d9d11e49d110086ba44295342, type: 2}
+      objectReference: {fileID: 2100000, guid: 3f070b9b51e38424e9597fbb6f473e87, type: 2}
     - target: {fileID: 919132149155446097, guid: d052a7fcca821124bb77120b8763b7d1, type: 3}
       propertyPath: m_Name
       value: BSC Lower
@@ -498,7 +498,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: fcff974524a63bd4eaa4a0a8cde12afe, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 5d69df9d9d11e49d110086ba44295342, type: 2}
+      objectReference: {fileID: 2100000, guid: 3f070b9b51e38424e9597fbb6f473e87, type: 2}
     - target: {fileID: 919132149155446097, guid: fcff974524a63bd4eaa4a0a8cde12afe, type: 3}
       propertyPath: m_Name
       value: BSC Door 2
@@ -580,7 +580,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: 454a583f824d205459e3794e58c27164, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 5d69df9d9d11e49d110086ba44295342, type: 2}
+      objectReference: {fileID: 2100000, guid: 3f070b9b51e38424e9597fbb6f473e87, type: 2}
     - target: {fileID: 919132149155446097, guid: 454a583f824d205459e3794e58c27164, type: 3}
       propertyPath: m_Name
       value: BSC Interior Floor
@@ -658,7 +658,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: f63b6b52496450145bd1be8a7c13cea3, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 5d69df9d9d11e49d110086ba44295342, type: 2}
+      objectReference: {fileID: 2100000, guid: 3f070b9b51e38424e9597fbb6f473e87, type: 2}
     - target: {fileID: 919132149155446097, guid: f63b6b52496450145bd1be8a7c13cea3, type: 3}
       propertyPath: m_Name
       value: BSC Suspension
