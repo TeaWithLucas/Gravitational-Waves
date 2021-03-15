@@ -100,11 +100,11 @@ namespace Game.Managers {
         }
 
         public static GameObject DisplayFullscreen(string name) {
-            return Instantiate(name, Canvas.transform.Find("Fullscreen"));
+            return Instantiate(name, Canvas.transform.Find("Player UI").Find("Fullscreen"));
         }
 
         public static GameObject DisplayWindow(string name) {
-            return Instantiate(name, Canvas.transform.Find("Windows Section"));
+            return Instantiate(name, Canvas.transform.Find("Player UI").Find("View Area").Find("Middle Section").Find("Windows Section"));
         }
 
         internal static GameObject Instantiate(string prefabID, GameObject parent) {

@@ -550,7 +550,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3020547900171715023, guid: 8e974141c9bfb5344a0612e4f000515e, type: 3}
       propertyPath: m_Name
-      value: View Area (1)
+      value: View Area
       objectReference: {fileID: 0}
     - target: {fileID: 3303358427216900168, guid: 8e974141c9bfb5344a0612e4f000515e, type: 3}
       propertyPath: m_AnchorMax.y

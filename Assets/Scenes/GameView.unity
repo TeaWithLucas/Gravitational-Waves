@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.2271316, g: 0.26437175, b: 0.284403, a: 1}
+  m_IndirectSpecularColor: {r: 0.22713214, g: 0.2643724, b: 0.2844034, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1607,7 +1607,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5882532155805418259, guid: 066a07f91e0b1a141a3677e5fd229d8a, type: 3}
       propertyPath: m_Name
-      value: PlayerUICanvas
+      value: Player UI
       objectReference: {fileID: 0}
     - target: {fileID: 5882532155805418263, guid: 066a07f91e0b1a141a3677e5fd229d8a, type: 3}
       propertyPath: m_Pivot.x
