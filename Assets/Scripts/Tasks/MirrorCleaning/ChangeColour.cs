@@ -16,16 +16,21 @@ public class ChangeColour : MonoBehaviour
     {
         FirstContactButton.onClick.AddListener(Cleaning);
         CleanButton.onClick.AddListener(Clean);
-        rend = GetComponent<Renderer>();
-
-        rend.material.color = colorToTurnTo;
     }
 
     public void Cleaning()
     {
+        rend = GetComponent<Renderer>();
+
+        rend.material.color = new Color(255F, 51F, 153F);
+
     }
     public void Clean()
     {
+         
+        rend = GetComponent<Renderer>();
+
+        rend.material.color = new Color(255F, 255F, 255F);
     }
 
     
