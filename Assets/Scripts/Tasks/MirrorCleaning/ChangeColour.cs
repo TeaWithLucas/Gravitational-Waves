@@ -12,18 +12,21 @@ public class ChangeColour : MonoBehaviour
 
     private void Start()
     {
+        mirror = transform.Find("Mirror").GetComponent<Image>();
+        CleanButton = transform.Find("CleanButton").GetComponent<Button>();
+        FirstContactButton = transform.Find("FirstContactButton").GetComponent<Button>();
     }
 
     public void Cleaning()
     {
         Debug.LogFormat("Applied First Contact");
-        mirror.GetComponent<Image>().color = new Color(255F, 51F, 153F);
+        mirror.color = new Color(255F, 51F, 153F);
 
     }
     public void Clean()
     {
         Debug.LogFormat("Mirror is now cleaned!");
-        mirror.GetComponent<Image>().color = new Color(255F, 255F, 255F);
+        mirror.color = new Color(255F, 255F, 255F);
     }
 
     

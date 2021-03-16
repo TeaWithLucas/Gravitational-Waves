@@ -121,7 +121,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 6661807512219044329}
+      - m_Target: {fileID: 7920158757902551762}
         m_TargetAssemblyTypeName: ChangeColour, Assembly-CSharp
         m_MethodName: Clean
         m_Mode: 1
@@ -693,7 +693,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 6661807512219044329}
+      - m_Target: {fileID: 7920158757902551762}
         m_TargetAssemblyTypeName: ChangeColour, Assembly-CSharp
         m_MethodName: Cleaning
         m_Mode: 1
@@ -1207,7 +1207,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8313574135281113689}
   - component: {fileID: 1058796277225086536}
-  - component: {fileID: 6661807512219044329}
+  - component: {fileID: 7920158757902551762}
   m_Layer: 0
   m_Name: Mirror Cleaning Task
   m_TagString: Untagged
@@ -1251,7 +1251,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f9e4d012668fea04dadb5fc6b12453ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &6661807512219044329
+--- !u!114 &7920158757902551762
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
