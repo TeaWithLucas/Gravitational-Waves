@@ -143,9 +143,9 @@ namespace Game.Utility {
             writer.Close();
         }
 
-        public static T ReadJson<T>(string filename) {
+        public static T ReadJson<T>(TextAsset asset) {
             //Debug.LogFormat("ReadJson: {0}", filename);
-            return JsonConvert.DeserializeObject<T>(AssetManager.Text(filename).text, SettingsManager.JsonSerializerSettings);
+            return JsonConvert.DeserializeObject<T>(asset.text, SettingsManager.JsonSerializerSettings);
         }
     }
 }
