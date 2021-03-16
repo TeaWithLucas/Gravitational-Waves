@@ -9,8 +9,6 @@ public class ChangeColour : MonoBehaviour
     public Renderer rend;
     public Button CleanButton;
     public Button FirstContactButton;
-    [SerializeField]
-    private Color colorToTurnTo = Color.white;
 
     private void Start()
     {

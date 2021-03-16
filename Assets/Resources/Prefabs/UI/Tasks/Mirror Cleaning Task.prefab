@@ -186,7 +186,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Complete Task
+  m_text: FINISH TASK
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -864,7 +864,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &6032703047900613912
 RectTransform:
   m_ObjectHideFlags: 0
@@ -882,8 +882,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 11, y: -232}
-  m_SizeDelta: {x: 600, y: 80}
+  m_AnchoredPosition: {x: 795, y: -441}
+  m_SizeDelta: {x: 230.3734, y: 75.4084}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7390794693730117585
 CanvasRenderer:
@@ -1252,4 +1252,3 @@ MonoBehaviour:
   rend: {fileID: 4538635588290766818}
   CleanButton: {fileID: 1871541850442099682}
   FirstContactButton: {fileID: 7956270762177673257}
-  colorToTurnTo: {r: 1, g: 1, b: 1, a: 1}
