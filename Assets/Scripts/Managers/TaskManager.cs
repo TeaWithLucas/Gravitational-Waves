@@ -41,7 +41,6 @@ namespace Game.Managers {
         }
 
         public static async System.Threading.Tasks.Task LoadAsync() {
-            Debug.Log("asd");
             var tasks = await GenericTaskReader.ReadTasksFromDiskAsync();
 
         }
