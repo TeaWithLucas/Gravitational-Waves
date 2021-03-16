@@ -6,6 +6,8 @@ using TMPro;
 using UnityEditor;
 using UnityEngine;
 using Game.Extensions;
+using Newtonsoft.Json;
+using Game.Utility;
 
 namespace Game.Managers {
     public static class AssetManager {
@@ -14,6 +16,8 @@ namespace Game.Managers {
         public static List<Sprite> Sprites { get; private set; }
         public static List<TMP_FontAsset> Fonts { get; private set; }
         public static List<TextAsset> Texts { get; private set; }
+        public static List<TextAsset> JSONs { get; private set; }
+        public static List<GameObject> Prefabs { get; private set; }
 
 
         public static bool Ready { get; private set; }
@@ -23,13 +27,15 @@ namespace Game.Managers {
             Sprites = new List<Sprite>();
             Fonts = new List<TMP_FontAsset>();
             Texts = new List<TextAsset>();
-            
+            JSONs = new List<TextAsset>();
+            Prefabs = new List<GameObject>();
+
             InitTextures();
             InitAllSprites();
             InitFontAssets();
             InitTextAssets();
-
-
+            InitJSONAssets();
+            InitPrefabAssets();
 
             Ready = true;
 
@@ -87,12 +93,34 @@ namespace Game.Managers {
         private static void InitTextAssets() {
             List<string> log = new List<string>();
             List<TextAsset> textFiles = new List<TextAsset>();
-            textFiles.AddRange(Resources.LoadAll<TextAsset>("Data").Cast<TextAsset>().ToList());
+            textFiles.AddRange(Resources.LoadAll<TextAsset>("Text").Cast<TextAsset>().ToList());
             foreach (TextAsset asset in textFiles) {
                 log.Add(asset.name);
                 Texts.Add(asset);
             }
             Debug.LogFormat("Texts: {0}", log.Commaise());
+        }
+
+        private static void InitJSONAssets() {
+            List<string> log = new List<string>();
+            List<TextAsset> jsonFiles = new List<TextAsset>();
+            jsonFiles.AddRange(Resources.LoadAll<TextAsset>("Data").Cast<TextAsset>().ToList());
+            foreach (TextAsset asset in jsonFiles) {
+                log.Add(asset.name);
+                JSONs.Add(asset);
+            }
+            Debug.LogFormat("JSONs: {0}", log.Commaise());
+        }
+
+        private static void InitPrefabAssets() {
+            List<string> log = new List<string>();
+            List<GameObject> prefabs = new List<GameObject>();
+            prefabs.AddRange(Resources.LoadAll<GameObject>("Prefabs").Cast<GameObject>().ToList());
+            foreach (GameObject asset in prefabs) {
+                log.Add(asset.name);
+                Prefabs.Add(asset);
+            }
+            Debug.LogFormat("Prefabs: {0}", log.Commaise());
         }
 
         public static Texture2D Texture(string name) {
@@ -125,9 +153,25 @@ namespace Game.Managers {
         }
         public static TextAsset Text(string name) {
             if (!Texts.Any(x => x.name.ToLower() == name.ToLower())) {
-                Debug.LogWarningFormat("No Font Found Named: {0}", name);
+                Debug.LogWarningFormat("No Text Named: {0}", name);
             }
             return Texts.DefaultIfEmpty(Texts[0]).FirstOrDefault(x => x.name.ToLower() == name.ToLower());
+        }
+        
+        public static T JSON<T>(string name) {
+            if (!JSONs.Any(x => x.name.ToLower() == name.ToLower())) {
+                Debug.LogWarningFormat("No JSON Named: {0}", name);
+                return default;
+            } else {
+                return Functions.ReadJson<T>(JSONs.First(x => x.name.ToLower() == name.ToLower()));
+            }
+        }
+
+        public static GameObject Prefab(string name) {
+            if (!Prefabs.Any(x => x.name.ToLower() == name.ToLower())) {
+                Debug.LogWarningFormat("No Prefab Named: {0}", name);
+            }
+            return Prefabs.DefaultIfEmpty(Prefabs[0]).FirstOrDefault(x => x.name.ToLower() == name.ToLower());
         }
 
         public static string Assets() {

@@ -27,7 +27,7 @@ namespace Game.Managers.Controllers
         {
             Camera.main.orthographic = true;
             Camera.main.transform.SetParent(transform);
-            Camera.main.transform.localPosition = new Vector3(0f, 0f, 0f);
+            Camera.main.transform.localPosition = new Vector3(0f, 30f, -45f);
             //Camera.main.transform.localEulerAngles = new Vector3(10f, 0f, 0f);
             Camera.main.transform.localEulerAngles = new Vector3(30f, 0f, 0f);
             Camera.main.orthographicSize = 10f;

@@ -26,11 +26,9 @@ namespace Game.Managers.Controllers {
             }
             if (Input.GetKeyDown(KeyCode.F1)) {
                 OnKeyF1();
-
             }
             if (Input.GetKeyDown(KeyCode.F10)) {
                 OnKeyF10();
-
             }
         }
     }
