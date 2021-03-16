@@ -227,7 +227,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 5d69df9d9d11e49d110086ba44295342, type: 2}
+  - {fileID: 2100000, guid: 3f070b9b51e38424e9597fbb6f473e87, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -329,7 +329,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: 0718d89fe009115418d12d7f1f29a97c, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 5d69df9d9d11e49d110086ba44295342, type: 2}
+      objectReference: {fileID: 2100000, guid: 3f070b9b51e38424e9597fbb6f473e87, type: 2}
     - target: {fileID: 919132149155446097, guid: 0718d89fe009115418d12d7f1f29a97c, type: 3}
       propertyPath: m_Name
       value: BSC1 Interior Top
@@ -402,7 +402,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: 9807afe216fd6ce489496bf4b15774f5, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 5d69df9d9d11e49d110086ba44295342, type: 2}
+      objectReference: {fileID: 2100000, guid: 3f070b9b51e38424e9597fbb6f473e87, type: 2}
     - target: {fileID: 919132149155446097, guid: 9807afe216fd6ce489496bf4b15774f5, type: 3}
       propertyPath: m_Name
       value: BSC Outer Tube
@@ -485,7 +485,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: 8663aa62fd9f2cc46931334404223416, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 5d69df9d9d11e49d110086ba44295342, type: 2}
+      objectReference: {fileID: 2100000, guid: 3f070b9b51e38424e9597fbb6f473e87, type: 2}
     - target: {fileID: 919132149155446097, guid: 8663aa62fd9f2cc46931334404223416, type: 3}
       propertyPath: m_Name
       value: Tube Part 2
@@ -638,7 +638,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: 5b077ddf9bdcf144f8915b5a061bde26, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 5d69df9d9d11e49d110086ba44295342, type: 2}
+      objectReference: {fileID: 2100000, guid: 3f070b9b51e38424e9597fbb6f473e87, type: 2}
     - target: {fileID: -5754084199372789682, guid: 5b077ddf9bdcf144f8915b5a061bde26, type: 3}
       propertyPath: m_Mesh
       value: 
@@ -725,7 +725,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: 326dbb670cc57bb43b38b1985d2603a3, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 5d69df9d9d11e49d110086ba44295342, type: 2}
+      objectReference: {fileID: 2100000, guid: 3f070b9b51e38424e9597fbb6f473e87, type: 2}
     - target: {fileID: 919132149155446097, guid: 326dbb670cc57bb43b38b1985d2603a3, type: 3}
       propertyPath: m_Name
       value: BSC Inner Tube
@@ -808,7 +808,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: b5afb3b18a0d8ee48bc3390ed6f12f9c, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 5d69df9d9d11e49d110086ba44295342, type: 2}
+      objectReference: {fileID: 2100000, guid: 3f070b9b51e38424e9597fbb6f473e87, type: 2}
     - target: {fileID: 919132149155446097, guid: b5afb3b18a0d8ee48bc3390ed6f12f9c, type: 3}
       propertyPath: m_Name
       value: Top Middle
@@ -891,7 +891,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: 1bbead37836b87b4b8740b53de318818, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 5d69df9d9d11e49d110086ba44295342, type: 2}
+      objectReference: {fileID: 2100000, guid: 3f070b9b51e38424e9597fbb6f473e87, type: 2}
     - target: {fileID: 919132149155446097, guid: 1bbead37836b87b4b8740b53de318818, type: 3}
       propertyPath: m_Name
       value: Tube Part 1
@@ -974,7 +974,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: 5b077ddf9bdcf144f8915b5a061bde26, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 5d69df9d9d11e49d110086ba44295342, type: 2}
+      objectReference: {fileID: 2100000, guid: 3f070b9b51e38424e9597fbb6f473e87, type: 2}
     - target: {fileID: 919132149155446097, guid: 5b077ddf9bdcf144f8915b5a061bde26, type: 3}
       propertyPath: m_Name
       value: Clamp Start
@@ -1057,7 +1057,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: 0e96f6764cba6dd41851a8563811f538, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 5d69df9d9d11e49d110086ba44295342, type: 2}
+      objectReference: {fileID: 2100000, guid: 3f070b9b51e38424e9597fbb6f473e87, type: 2}
     - target: {fileID: 919132149155446097, guid: 0e96f6764cba6dd41851a8563811f538, type: 3}
       propertyPath: m_Name
       value: BSC1 Interior Bottom
@@ -1130,7 +1130,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: 5b077ddf9bdcf144f8915b5a061bde26, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 5d69df9d9d11e49d110086ba44295342, type: 2}
+      objectReference: {fileID: 2100000, guid: 3f070b9b51e38424e9597fbb6f473e87, type: 2}
     - target: {fileID: -5754084199372789682, guid: 5b077ddf9bdcf144f8915b5a061bde26, type: 3}
       propertyPath: m_Mesh
       value: 
@@ -1217,7 +1217,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: cdbae31453fc8444f8338e0f5c25b958, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 5d69df9d9d11e49d110086ba44295342, type: 2}
+      objectReference: {fileID: 2100000, guid: 3f070b9b51e38424e9597fbb6f473e87, type: 2}
     - target: {fileID: 919132149155446097, guid: cdbae31453fc8444f8338e0f5c25b958, type: 3}
       propertyPath: m_Name
       value: Top Exit
