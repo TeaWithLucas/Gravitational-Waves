@@ -19,7 +19,7 @@ public class InteractionListener : MonoBehaviour, IInteractible {
     public bool IsInteractionAllowed = true;
 
     [Tooltip("Whether the interaction can be triggered by entering the sphere trigger.")]
-    public bool CanTriggerByProximity;
+    public bool CanTriggerByProximity = false;
 
     public float triggerRadius = 5f;
 
@@ -32,11 +32,15 @@ public class InteractionListener : MonoBehaviour, IInteractible {
     [Tooltip("The keys by which the interaction can be triggered.")]
     public List<KeyCode> TriggerKeys = new List<KeyCode> { KeyCode.F };
 
-    public UnityEvent OnInteraction = new UnityEvent(); 
+    public UnityEvent OnInteraction { get; set; }
 
     private SphereCollider sphereCollider;
 
     private NetworkProximityFinder networkProximityChecker;
+
+    public void OnEnable() {
+        OnInteraction = new UnityEvent();
+    }
 
     public void Start()
     {
@@ -46,15 +50,12 @@ public class InteractionListener : MonoBehaviour, IInteractible {
         networkProximityChecker = transform.GetComponent<NetworkProximityFinder>();
     }
 
-    public void Interact()
-    {
-        
-         OnInteraction.Invoke();
-
+    public void Interact() {
+        OnInteraction?.Invoke();
     }
 
-    public void Update()
-    {
+    public void Update() {
+
         if (IsInteractableBy(InteractionMethod.Key))
         {
             float distance = networkProximityChecker.DistanceToLocalConn();
@@ -62,8 +63,8 @@ public class InteractionListener : MonoBehaviour, IInteractible {
             {
                 foreach (var keyCode in GetTriggerKeys())
                 {
-                    if (Input.GetKeyDown(keyCode))
-                    {
+                    if (Input.GetKeyDown(keyCode)) {
+                        Debug.LogFormat("Key {0} triggered", keyCode);
                         Interact();
                         break;
                     }
@@ -100,9 +101,7 @@ public class InteractionListener : MonoBehaviour, IInteractible {
     /// </summary>
     /// <param name="interactionMethod">The specified interaction method.</param>
     /// <returns>True - if the object can be interacted with by the specified method | False - otherwise.</returns>
-    public bool IsInteractableBy(InteractionMethod interactionMethod)
-    {
-        if (!IsInteractionAllowed) return false;
+    public bool IsInteractableBy(InteractionMethod interactionMethod) {
 
         return interactionMethod switch
         {
@@ -117,12 +116,8 @@ public class InteractionListener : MonoBehaviour, IInteractible {
     /// When another object with a collider enters the trigger.
     /// </summary>
     /// <param name="other">The other object's collider compontent.</param>
-    private void OnTriggerEnter(Collider other)
-    {
-        if (!IsInteractableBy(InteractionMethod.Trigger)) return;
-
-        if (other.gameObject.CompareTag("Player"))
-        {
+    private void OnTriggerEnter(Collider other) {
+        if (IsInteractableBy(InteractionMethod.Trigger) && other.gameObject.CompareTag("Player")) {
             Interact();
         }
     }
