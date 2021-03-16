@@ -38,11 +38,14 @@ public class WaveData {
 
     public List<Vector2> listToVector(List<List<float>> orig) {
         List<Vector2> list = new List<Vector2>();
-
+        int count = 0;
+        //int divisable = orig.Count / 2000;
         foreach (List<float> coords in orig) {
+            //if (coords.Count > 1 && (count % divisable == 0)) {
             if (coords.Count > 1) {
                 list.Add(new Vector2(coords[0], coords[1]));
             }
+            count++;
         }
         return list;
     }
