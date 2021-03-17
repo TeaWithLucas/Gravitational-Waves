@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 1756505682}
-  m_IndirectSpecularColor: {r: 0.25075403, g: 0.3129436, b: 0.36807668, a: 1}
+  m_IndirectSpecularColor: {r: 0.25075352, g: 0.31294346, b: 0.36807644, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1532,6 +1532,7 @@ GameObject:
   m_Component:
   - component: {fileID: 317946407}
   - component: {fileID: 317946406}
+  - component: {fileID: 317946408}
   m_Layer: 0
   m_Name: MiniMapCamera
   m_TagString: Untagged
@@ -1596,6 +1597,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
+--- !u!114 &317946408
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 317946405}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 079e5c99ec870ef42bb5f71e2f9bdf0d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 5328458565928408179, guid: a5bdca0a2315d43499be7dcef473fbc7, type: 3}
 --- !u!1 &322617058
 GameObject:
   m_ObjectHideFlags: 0
@@ -3439,8 +3453,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 125.367134, y: 0}
-  m_SizeDelta: {x: 240.73427, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &839017595
 MonoBehaviour:
@@ -6192,8 +6206,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 125.367134, y: 0}
-  m_SizeDelta: {x: 240.73427, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1370978107
 MonoBehaviour:
