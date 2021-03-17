@@ -19,6 +19,8 @@ namespace Game.Managers {
         public static GameObject CharactersContainer { get; private set; }
         public static GameObject ObjectInstancesContainer { get; private set; }
         public static Canvas Canvas { get; private set; }
+        public static GameObject FullScreen { get; private set; }
+        public static GameObject WindowsSection { get; private set; }
 
         public static List<GameObject> GameObjects { get; private set; }
 
@@ -55,6 +57,13 @@ namespace Game.Managers {
             Debug.Log(Canvas);
             CameraManager.Reset();
             InitGameObjects();
+            if (Canvas.transform.Find("Player UI")) {
+                FullScreen = Canvas.transform.Find("Player UI").Find("Fullscreen").gameObject;
+                WindowsSection = Canvas.transform.Find("Player UI").Find("View Area").Find("Middle Section").Find("Windows Section").gameObject;
+            } else {
+                FullScreen = null;
+                WindowsSection = null;
+            }
 
             Ready = true;
         }
@@ -100,11 +109,20 @@ namespace Game.Managers {
         }
 
         public static GameObject DisplayFullscreen(string name) {
-            return Instantiate(name, Canvas.transform.Find("Fullscreen"));
+            if (FullScreen) {
+                return Instantiate(name, FullScreen);
+            } else {
+                return null;
+            }
+            
         }
-
+        
         public static GameObject DisplayWindow(string name) {
-            return Instantiate(name, Canvas.transform.Find("Windows Section"));
+            if (FullScreen) {
+                return Instantiate(name, WindowsSection);
+            } else {
+                return null;
+            }
         }
 
         internal static GameObject Instantiate(string prefabID, GameObject parent) {
