@@ -72,3 +72,5 @@ crashlytics-build.properties
 
 # Others
 UserSettings/EditorUserSettings.asset
+
+/[Aa]ssets/Resources/Prefabs/UI.meta
