@@ -2,7 +2,7 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class KeycardTask : MonoBehaviour
+public class KeycardTask : MonoBehaviour, ITaskPrefab
 {
     [SerializeField]
     protected Text _inputCode;
@@ -17,26 +17,33 @@ public class KeycardTask : MonoBehaviour
     protected float _codeResetTimeInSeconds = 0.5f;
 
     private bool _isResetting = false;
+    private bool _ready;
 
-    private GameObject TaskUIFramework;
 
-    private void Awake()
+    public Button CompleteBtn => throw new System.NotImplementedException();
+
+    public TaskWindow Parent { get; set; }
+
+    public bool IsReady()
     {
-        TaskUIFramework = GameObject.FindGameObjectWithTag("TaskUIFramework");
-        
+        return _ready;
     }
 
     private void OnEnable()
     {
-        string code = string.Empty;
-
-        for (int i = 0; i < _codeLength; i++)
+        if (!IsReady())
         {
-            code += Random.Range(1, 10);
-        }
+            string code = string.Empty;
 
-        _cardCode.text = code;
-        _inputCode.text = string.Empty;
+            for (int i = 0; i < _codeLength; i++)
+            {
+                code += Random.Range(1, 10);
+            }
+
+            _cardCode.text = code;
+            _inputCode.text = string.Empty;
+            _ready = true;
+        }
     }
 
     public void ButtonClick(int number)
@@ -48,7 +55,6 @@ public class KeycardTask : MonoBehaviour
         if (_inputCode.text == _cardCode.text)
         { 
             _inputCode.text = "Correct";
-            TaskUIFramework.SetActive(false);
 
         }
         else if (_inputCode.text.Length > _codeLength)
@@ -68,5 +74,13 @@ public class KeycardTask : MonoBehaviour
         _isResetting = false;
     }
 
+    public void CompleteTask()
+    {
+        throw new System.NotImplementedException();
+    }
 
+    public void SetParent(TaskWindow parent)
+    {
+        Parent = parent;
+    }
 }

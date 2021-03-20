@@ -24,7 +24,7 @@ namespace Game.Managers {
                 new StandardTask("WaveformFitter", "Waveform Fitter", "Fit da Waveform", "Waveform Fitter Task", "Reward2"),
                 new StandardTask("Range", "Range", "Get the waveform in the correct area?", "Range Task", "Reward3"),
                 new StandardTask("Laserpointer", "Laser pointer", "Point da lazor to the right place!", "Mirror Cleaning Task", "Reward2"),
-                new StandardTask("EasterCrow", "Easter Crow", "Chirp Chirp", "Mirror Cleaning Task", "Reward3"),
+                new StandardTask("KeycodeTask", "KeycodeTask", "fuck u", "KeycodeTask", "NOTHING"),
                 new StandardTask("HelloWorld", "Hello World", "Say Hi!", "Mirror Cleaning Task", "Reward4"),
             };
             onTaskUpdate = new UnityEvent();
@@ -55,13 +55,7 @@ namespace Game.Managers {
             onTaskUpdate.RemoveListener(action);
         }
         public static Task Task(string id) {
-            if (Tasks.Any(x => x.GetID().ToLower() == id.ToLower())) {
-                return Tasks.First(x => x.GetID().ToLower() == id.ToLower());
-            } else {
-                Debug.LogWarningFormat("No Task Found Named: {0}", id);
-                return null;
-            }
-           
+            return Tasks.FirstOrDefault(x => x.GetID().ToLower() == id.ToLower());
         }
 
         public static void TaskUpdated() {

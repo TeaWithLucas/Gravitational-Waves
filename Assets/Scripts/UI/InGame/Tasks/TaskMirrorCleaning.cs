@@ -11,14 +11,24 @@ public class TaskMirrorCleaning : MonoBehaviour, ITaskPrefab {
     public Toggle CheckBox { get; private set; }
     public TaskWindow Parent { get; private set; }
 
-    public bool Ready { get; private set; }
+    private bool ready;
+
+    public bool IsReady()
+    {
+        return ready;
+    }
+
+    private void SetReady(bool value)
+    {
+        ready = value;
+    }
 
     private void OnEnable() {
-        if (!Ready) {
+        if (!IsReady()) {
 
             CompleteBtn = transform.Find("Complete Task Button").GetComponent<Button>();
             CheckBox = transform.Find("Click to Win Toggle").GetComponent<Toggle>();
-            Ready = true;
+            SetReady(true);
         }
     }
 
