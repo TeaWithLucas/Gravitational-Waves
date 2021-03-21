@@ -1,14 +1,10 @@
 ﻿using Game.Managers.Controllers;
-using Game.Utility;
-using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using TMPro;
-using UnityEditor;
 using UnityEngine;
 
-namespace Game.Managers {
+namespace Game.Managers
+{
     public static class InstanceManager {
 
         public static GameObject Operator { get; private set; }

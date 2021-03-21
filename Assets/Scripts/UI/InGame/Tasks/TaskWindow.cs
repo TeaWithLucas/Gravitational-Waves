@@ -37,7 +37,21 @@ public class TaskWindow : MonoBehaviour {
     public void SetTask(Task task) {
         Task = task;
         TaskTitle.text = task.Title;
-        TaskInstance = InstanceManager.Instantiate(task.Prefab, TaskContainer).GetComponent<ITaskPrefab>();
+
+        if (task is GenericTask genericTask)
+        {
+            
+            TaskInstance = InstanceManager.Instantiate("genericTaskPrefab", TaskContainer).GetComponent<ITaskPrefab>();
+            var correctAnswer = genericTask.CorrectAnswer;
+            var externalURL = genericTask.Url;
+
+        }
+        else
+        {
+            TaskInstance = InstanceManager.Instantiate(task.Prefab, TaskContainer).GetComponent<ITaskPrefab>();
+
+        }
+
         Task.Owner.HasTaskOpen = true;
         TaskInstance.SetParent(this);
     }
