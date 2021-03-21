@@ -19,19 +19,22 @@ namespace Mirror.Examples.Additive
         public override void OnStartServer()
         {
             base.OnStartServer();
-
-           
         }
 
         public override void Start() {
             base.Start();
-            if (!isNetworkActive) {
+        }
+
+        public void StartHosting()
+        {
+            if (!isNetworkActive)
+            {
                 StartHost();
             }
 
-            if (autoCreatePlayer) {
+            /*if (autoCreatePlayer) {
                 ClientScene.AddPlayer(NetworkClient.connection);
-            }
+            }*/
 
             // load all subscenes on the server only
             StartCoroutine(LoadSubScenes());
