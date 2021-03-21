@@ -23,7 +23,6 @@ namespace Game.Tasks
             Description = description;
             Prefab = prefab;
             Reward = reward;
-            defaults();
         }
 
         public Task(Task task) {
@@ -33,12 +32,6 @@ namespace Game.Tasks
             Description = task.Description;
             Prefab = task.Prefab;
             Reward = task.Reward;
-            defaults();
-        }
-
-        private void defaults() {
-            IsInProgress = false;
-            IsCompleted = false;
         }
 
         public abstract Task Clone();

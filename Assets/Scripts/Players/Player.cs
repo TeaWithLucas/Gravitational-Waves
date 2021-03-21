@@ -32,7 +32,6 @@ namespace Game.Players {
             IsHost = false;
 
             NumberOfTasks = SettingsManager.taskDefaultNumber;
-            PlayerManager.AssignRandomTasks(this);
             Team = team;
             Score = 0;
         }

@@ -10,7 +10,7 @@ public static class GenericTaskReader
 {
     public async static Task<GenericTask[]> ReadTasksFromDiskAsync()
     {
-        using StreamReader file = File.OpenText("./asd.json");
+        using StreamReader file = File.OpenText("./tasks.json");
 
         var jsonString = await file.ReadToEndAsync();
 

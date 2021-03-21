@@ -30,7 +30,7 @@ namespace Game.UI.InGame.Sections {
 
                 Details = gameObject.transform.Find("Details").GetComponentInChildren<TextMeshProUGUI>();
                 UpdateCurrentPlayer();
-                PlayerManager.AddPlayerUpdateListener(UpdateCurrentPlayer);
+                PlayerManager.OnPlayerUpdate.AddListener(UpdateCurrentPlayer);
 
                 //UpdateCurrentCharacter();
                 Ready = true;

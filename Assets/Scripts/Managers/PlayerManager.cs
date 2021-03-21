@@ -6,27 +6,19 @@ using UnityEngine.Events;
 using System.Linq;
 using Game.Tasks;
 using System.Collections.Generic;
+using Game.Teams;
 
 namespace Game.Managers {
     public static class PlayerManager {
-
-        public static bool Ready { get; private set; }
-
-        public static UnityEvent onPlayerUpdate { get; private set; }
+        public static UnityEvent OnPlayerUpdate = new UnityEvent(); 
         public static Player LocalPlayer { get; private set; }
 
-        static PlayerManager() {
-            Debug.Log("Loading PlayerManager");
-            LocalPlayer = new Player("Test Player", TeamManager.Teams.First());
-            onPlayerUpdate = new UnityEvent();
-            Ready = true;
+        public static void Load() {
+            LocalPlayer = CreatePlayer("Test Player", TeamManager.Teams[0]);
+            AssignRandomTasks(LocalPlayer);
         }
 
-        public static void Load() { }
-
         public static void AssignRandomTasks(Player player) {
-            Debug.Log(TaskManager.Tasks.Count);
-
             var tasks = new List<Task>(TaskManager.Tasks); // temp list copy of tasks
 
             for (int i = 0; i < Math.Min(TaskManager.Tasks.Count, player.NumberOfTasks); i++) {
@@ -36,19 +28,18 @@ namespace Game.Managers {
                 player.AssignTask(task);
             }
 
-            Debug.Log(TaskManager.Tasks.Count);
+            NotifyPlayerUpdate();
         }
 
-        public static void AddPlayerUpdateListener(UnityAction action) {
-            onPlayerUpdate.AddListener(action);
+        public static Player CreatePlayer(string name, Team team)
+        {
+            var player = new Player(name, team);
+            
+            return player;
         }
 
-        public static void RemovePlayerUpdateListener(UnityAction action) {
-            onPlayerUpdate.RemoveListener(action);
-        }
-
-        public static void PlayerUpdated() {
-            onPlayerUpdate?.Invoke();
+        public static void NotifyPlayerUpdate() {
+            OnPlayerUpdate?.Invoke();
         } 
     }
 }
