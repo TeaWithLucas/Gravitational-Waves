@@ -1,12 +1,10 @@
 using Game.Managers;
 using Game.Players;
-using Game.Scores;
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-namespace Game.Tasks {
+namespace Game.Tasks
+{
     [Serializable]
     public abstract class Task : ITask {
         public bool IsInProgress { get; protected set; }
