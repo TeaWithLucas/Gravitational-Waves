@@ -1,13 +1,11 @@
 ﻿using UnityEngine;
-using System.Collections;
-using System;
 using Game.Tasks;
 using System.Collections.Generic;
 using UnityEngine.Events;
 using System.Linq;
-using Game.Teams;
 
-namespace Game.Managers {
+namespace Game.Managers
+{
     public static class TaskManager {
 
         public static List<Task> Tasks { get; private set; }

@@ -1,13 +1,10 @@
 using Game.Managers;
 using Game.Tasks;
-using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class TaskWindow : MonoBehaviour {
-
 
     public GameObject Window { get; private set; }
     public Button CloseWindowBtn { get; private set; }

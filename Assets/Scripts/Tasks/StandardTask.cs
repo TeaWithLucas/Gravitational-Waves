@@ -1,11 +1,8 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEditor;
 using System;
 using Newtonsoft.Json;
 
-namespace Game.Tasks {
+namespace Game.Tasks
+{
     [Serializable]
     public class StandardTask : Task {
         [JsonConstructor]
