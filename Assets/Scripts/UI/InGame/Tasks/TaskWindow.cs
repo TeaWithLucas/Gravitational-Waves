@@ -40,11 +40,10 @@ public class TaskWindow : MonoBehaviour {
 
         if (task is GenericTask genericTask)
         {
-            
+
             TaskInstance = InstanceManager.Instantiate("genericTaskPrefab", TaskContainer).GetComponent<ITaskPrefab>();
             var correctAnswer = genericTask.CorrectAnswer;
             var externalURL = genericTask.Url;
-
         }
         else
         {

@@ -1,7 +1,4 @@
-﻿using Game.Tasks;
-using TMPro;
-using UnityEngine;
-using UnityEngine.UI;
+﻿using UnityEngine.UI;
 
 public interface ITaskPrefab {
     Button CompleteBtn { get; } // ????
