@@ -17,11 +17,6 @@ namespace Game.Tasks
         public Task Parent { get; protected set; }
         public Player Owner { get; protected set; }
 
-
-        public Task(string title)
-        {
-            Title = title;
-        }
         public Task(string id, string title, string description, string prefab, string reward) {
             Id = id;
             Title = title;
