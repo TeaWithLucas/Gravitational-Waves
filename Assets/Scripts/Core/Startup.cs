@@ -10,17 +10,17 @@ namespace Game.Core {
 
     //[InitializeOnLoad]
     public static class Startup {
-
-        static Startup() {
-            Debug.Log("Start Script - Up and running");
-        }
-
         [RuntimeInitializeOnLoadMethod]
         static async Task OnRuntimeMethodLoad() {
             Debug.Log("Starting Manager Loading");
+            await TaskManager.LoadAsync();
+
             SettingsManager.Load();
             AssetManager.Load();
             InstanceManager.Load();
+            
+            PlayerManager.Load();
+
             UIManager.Load();
 
             MySceneManager.Load();
@@ -28,8 +28,8 @@ namespace Game.Core {
             InputManager.Load();
 
             ActionManager.Load();
-            PlayerManager.Load();
-            await TaskManager.LoadAsync();
+            
+
             TeamManager.Load();
 
             NetworkManager.Load();

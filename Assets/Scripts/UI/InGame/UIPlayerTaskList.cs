@@ -17,30 +17,17 @@ public class UIPlayerTaskList : MonoBehaviour {
 
     private List<UITaskRow> displayedTasks;
 
-    public static bool Ready { get; private set; }
-
     private void OnEnable() {
-
-        if (!Ready) {
-            taskListRowPrefab = AssetManager.Prefab(SettingsManager.taskListRowPrefab);
-            taskListScrollView = gameObject.GetComponentInChildren<ScrollRect>();
-            taskListContainer = taskListScrollView.content.gameObject;
-            displayedTasks = new List<UITaskRow>();
-            UpdateTasks();
-            TaskManager.AddTaskUpdateListener(UpdateTasks);
-        }
+        taskListRowPrefab = AssetManager.Prefab(SettingsManager.taskListRowPrefab);
+        taskListScrollView = gameObject.GetComponentInChildren<ScrollRect>();
+        taskListContainer = taskListScrollView.content.gameObject;
+        displayedTasks = new List<UITaskRow>();
+        PlayerManager.OnPlayerUpdate.AddListener(DisplayPlayerTasks);
+        Debug.Log("UIPlayerTaskList OnEnable");
     }
 
-    // Start is called before the first frame update
-    void Start() {
-
-    }
-
-    void Update() {
-
-    }
-
-    private void UpdateTasks() {
+    private void DisplayPlayerTasks() {
+        Debug.Log("ASDASDASD");
         foreach(Task task in PlayerManager.LocalPlayer.AssignedTasks) {
             if(!displayedTasks.Any(x => x.Task == task)) {
                 GameObject isntance = Instantiate(taskListRowPrefab, taskListContainer.transform);
