@@ -23,6 +23,8 @@ namespace Game.Players {
 
         public int Score { get; protected set; }
 
+        public bool HasTaskOpen { get; set; }
+
         public Player(string name, Team team) {
             Name = name;
             Thumbnail = "gravitationalwaves-tex";

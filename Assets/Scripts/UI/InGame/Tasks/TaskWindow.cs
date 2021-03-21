@@ -41,6 +41,7 @@ public class TaskWindow : MonoBehaviour {
         Task = task;
         TaskTitle.text = task.Title;
         TaskInstance = InstanceManager.Instantiate(task.Prefab, TaskContainer).GetComponent<ITaskPrefab>();
+        Task.Owner.HasTaskOpen = true;
         TaskInstance.SetParent(this);
     }
 
@@ -51,6 +52,7 @@ public class TaskWindow : MonoBehaviour {
     }
 
     public void CloseWindow() {
+        Task.Owner.HasTaskOpen = false;
         Destroy(gameObject);
     }
 }

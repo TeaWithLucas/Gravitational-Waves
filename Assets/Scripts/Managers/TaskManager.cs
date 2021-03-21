@@ -29,16 +29,20 @@ namespace Game.Managers {
             };
             onTaskUpdate = new UnityEvent();
             Ready = true;
-
         }
 
         internal static void TriggeredTask(Task task) {
+            if (PlayerManager.LocalPlayer.HasTaskOpen) return; // Player already has a task open. Avoiding opening tasks multiple times
+
             Debug.LogFormat("Task {0} triggered", task.Title);
-            if (PlayerManager.LocalPlayer.AssignedTasks.Any(x => x.GetOrigin() == task && !x.IsCompleted)) {
-                Task playerTask = PlayerManager.LocalPlayer.AssignedTasks.First(x => x.GetOrigin() == task && !x.IsCompleted);
-                GameObject taskUI  = InstanceManager.DisplayFullscreen("Task UI Framework");
+
+            var playerTask = PlayerManager.LocalPlayer.AssignedTasks.FirstOrDefault(x => x.GetOrigin() == task && !x.IsCompleted);
+
+            if (playerTask != null) {
+                GameObject taskUI = InstanceManager.DisplayFullscreen("Task UI Framework");
                 TaskWindow taskPrefab = taskUI.GetComponent<TaskWindow>();
                 taskPrefab.SetTask(playerTask);
+                PlayerManager.LocalPlayer.HasTaskOpen = true;
             }
         }
 

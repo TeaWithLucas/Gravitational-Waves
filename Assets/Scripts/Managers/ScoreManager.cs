@@ -38,13 +38,13 @@ namespace Game.Managers {
         }
 
         public static Reward Reward(string id) {
-            if (Rewards.Any(x => x.Id.ToLower() == id.ToLower())) {
-                return Rewards.First(x => x.Id.ToLower() == id.ToLower());
-            } else {
+            var reward = Rewards.FirstOrDefault(x => x.Id.ToLower() == id.ToLower());
+
+            if (reward == null) {
                 Debug.LogWarningFormat("No Score Found Named: {0}", id);
-                return null;
             }
 
+            return reward;
         }
     }
 }
