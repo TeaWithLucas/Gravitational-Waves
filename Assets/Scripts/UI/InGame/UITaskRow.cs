@@ -14,19 +14,11 @@ public class UITaskRow : MonoBehaviour {
 
     public Task Task { get; set; }
 
-    public static bool Ready { get; private set; }
-
     private void OnEnable() {
-        if (!Ready) {
-            Transform taskTitleTrans = transform.Find("TaskTitle");
-            taskTitle = taskTitleTrans.GetComponentInChildren<TMP_Text>();
-            button = transform.GetComponent<Button>();
-            image = transform.GetComponent<Image>();
-        }
-    }
-
-    private void Start() {  
-
+        Transform taskTitleTrans = transform.Find("TaskTitle");
+        taskTitle = taskTitleTrans.GetComponentInChildren<TMP_Text>();
+        button = transform.GetComponent<Button>();
+        image = transform.GetComponent<Image>();
     }
 
     public void AssignTask(Task task) {
