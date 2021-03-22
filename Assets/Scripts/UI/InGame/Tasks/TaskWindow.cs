@@ -12,6 +12,12 @@ public class TaskWindow : MonoBehaviour {
     public ITaskPrefab TaskInstance { get; private set; }
     public TMP_Text TaskTitle { get; private set; }
 
+    public string TaskCorrectAnswer { get; private set; }
+
+    public string TaskExternalURL{ get; private set; }
+
+    public GenericTaskManager GenericTaskManager;
+
     public Task Task { get; private set; }
 
     public bool Ready { get; private set; }
@@ -37,13 +43,14 @@ public class TaskWindow : MonoBehaviour {
     public void SetTask(Task task) {
         Task = task;
         TaskTitle.text = task.Title;
-
         if (task is GenericTask genericTask)
         {
+            var genericTaskGameObject = InstanceManager.Instantiate("GenericTask", TaskContainer);
+            TaskInstance = genericTaskGameObject.GetComponent<ITaskPrefab>();
 
-            TaskInstance = InstanceManager.Instantiate("genericTaskPrefab", TaskContainer).GetComponent<ITaskPrefab>();
-            var correctAnswer = genericTask.CorrectAnswer;
-            var externalURL = genericTask.Url;
+            var genericTaskManager = genericTaskGameObject.GetComponent<GenericTaskManager>();
+
+            genericTaskManager.SetTask(genericTask);
         }
         else
         {

@@ -19,11 +19,17 @@ public class KeycardTask : MonoBehaviour, ITaskPrefab
     private bool _isResetting = false;
     private bool _ready;
 
+    private UIUtils UIUtils;
+
 
     public Button CompleteBtn => throw new System.NotImplementedException();
 
     public TaskWindow Parent { get; set; }
 
+    public void Awake()
+    {
+        UIUtils = gameObject.AddComponent<UIUtils>();
+    }
     public bool IsReady()
     {
         return _ready;
@@ -60,19 +66,10 @@ public class KeycardTask : MonoBehaviour, ITaskPrefab
         else if (_inputCode.text.Length > _codeLength)
         {
             _inputCode.text = "Failed";
-            StartCoroutine(ResetCode());
+            StartCoroutine(UIUtils.ResetCode(_inputCode, _codeResetTimeInSeconds));
         }
     }
 
-    private IEnumerator ResetCode()
-    {
-        _isResetting = true;
-
-        yield return new WaitForSeconds(_codeResetTimeInSeconds);
-
-        _inputCode.text = string.Empty;
-        _isResetting = false;
-    }
 
     public void CompleteTask()
     {

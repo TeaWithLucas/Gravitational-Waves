@@ -73,7 +73,7 @@ namespace Game.Managers
 
         internal static GameObject Instantiate(string prefabID, Transform parent) {
             GameObject prefab = AssetManager.Prefab(prefabID);
-            GameObject instance = GameObject.Instantiate(prefab, parent);
+            GameObject instance = Object.Instantiate(prefab, parent);
             return instance;
         }
     }
