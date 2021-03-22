@@ -5,6 +5,7 @@ using UnityEngine.Events;
 using System;
 using System.Collections.Generic;
 using static Game.Managers.UIManager;
+using System.Linq;
 
 #if UNITY_EDITOR
 using UnityEditor;
@@ -20,6 +21,45 @@ namespace Game.Managers {
         public static List<string> AdditonalScenes { get; private set; }
 
         private static List<string> OverMenuScenes;
+
+        public static Dictionary<string, List<KeyValuePair<string, dynamic>>> SceneArguments = new Dictionary<string, List<KeyValuePair<string, dynamic>>>
+        {
+            { 
+                "GameView", 
+                new List<KeyValuePair<string, dynamic>> {
+                    new KeyValuePair<string, dynamic>("IsHost", false),
+                } 
+            }
+        };
+
+        /// <summary>
+        /// Returns the value of the specified argument by name for the specified scene, if any.
+        /// </summary>
+        /// <param name="sceneName">The specified scene.</param>
+        /// <param name="argumentName">The name of the argument.</param>
+        /// <returns>The value found for the specified scene by the specified argument name, if any. Null otherwise</returns>
+        public static T GetSceneArgument<T>(string sceneName, string argumentName)
+        {
+            if (SceneArguments.TryGetValue(sceneName, out List<KeyValuePair<string, dynamic>> argumentsListForScene))
+            {
+                return (T) argumentsListForScene.Find(arg => arg.Key == argumentName).Value;
+            }
+
+            return default;
+        }
+
+        public static void SetSceneArgument(string sceneName, string argumentName, dynamic value)
+        {
+            List<KeyValuePair<string, dynamic>> argumentsListForScene = new List<KeyValuePair<string, dynamic>>();
+
+            if (!SceneArguments.ContainsKey(sceneName)) // If no arguments list for the scene, create it.
+                SceneArguments.Add(sceneName, argumentsListForScene);
+
+            argumentsListForScene = SceneArguments[sceneName];
+
+            argumentsListForScene.RemoveAll(arg => arg.Key == argumentName);
+            argumentsListForScene.Add(new KeyValuePair<string, dynamic>(argumentName, value));
+        }
 
         public static string overlay = "OverlayMenu";
         public static string mainMenu = "MainMenu";

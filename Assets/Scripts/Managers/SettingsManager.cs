@@ -51,13 +51,6 @@ namespace Game.Managers {
         public const int taskDefaultNumber = 10;
         public const int teamsDefaultNumber = 2;
 
-        public static bool Ready { get; private set; }
-
-        static SettingsManager() {
-            Debug.Log("Loading SettingsManager");
-            Ready = true;
-        }
-
         public static void Load() { }
 
     }

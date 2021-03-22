@@ -1,3 +1,4 @@
+using Game.Managers;
 using Mirror;
 using Mirror.Discovery;
 using Mirror.Examples.Additive;
@@ -28,14 +29,12 @@ public class NewNetworkDiscovery : NetworkDiscoveryBase<NetworkRequestMessage, N
     [Tooltip("Invoked when a server is found")]
     public ServerFoundUnityEvent OnServerFound;
 
-    private AdditiveNetworkManager networkManager;
-
     public override void Start()
     {
+        var isHost = MySceneManager.GetSceneArgument<bool>("GameView", "IsHost");
+
         ServerId = RandomLong();
         GameCode = GameCodeGenerator.Generate();
-
-        networkManager = GetComponent<AdditiveNetworkManager>();
 
         // active transport gets initialized in awake
         // so make sure we set it here in Start()  (after awakes)
@@ -43,13 +42,16 @@ public class NewNetworkDiscovery : NetworkDiscoveryBase<NetworkRequestMessage, N
         if (transport == null)
             transport = Transport.activeTransport;
 
-        base.Start();
-    }
+        if (isHost)
+        {
+            AdvertiseServer();
+        } 
+        else
+        {
+            StartDiscovery();
+        }
 
-    public void StartDiscoveryAndHost()
-    {
-        networkManager.StartHosting();
-        StartDiscovery();
+        base.Start();
     }
 
     /// <summary>
