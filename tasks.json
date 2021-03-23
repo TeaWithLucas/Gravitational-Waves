@@ -1,0 +1,18 @@
+[
+  {
+    "id":  "GenericTask1",
+    "title": "Generic Task 1",
+    "description": "Hello Generic task 1!",
+    "task_url": "https://",
+    "correct_answer": "1",
+    "reward": "Reward4"
+  },
+  {
+    "id": "GenericTask2",
+    "title": "Generic Task 2",
+    "description": "Hello Generic task 2!",
+    "task_url": "https://",
+    "correct_answer": "259867",
+    "reward": "Reward4"
+  }
+]

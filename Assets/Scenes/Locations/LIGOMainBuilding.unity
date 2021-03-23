@@ -148,7 +148,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 218677762}
   m_LocalRotation: {x: 0.35355338, y: 0.35355338, z: -0.1464466, w: 0.8535535}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -12.09, y: 17.1, z: -12.09}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1888765944}
@@ -166,7 +166,7 @@ Light:
   m_Type: 1
   m_Shape: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 0.5
+  m_Intensity: 1
   m_Range: 10
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
@@ -301,6 +301,9 @@ MonoBehaviour:
   CanTriggerByMouse: 1
   CanTriggerByKeys: 1
   TriggerKeys: 66000000
+  OnInteraction:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!135 &234604216
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -485,6 +488,10 @@ PrefabInstance:
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 8625499214342235163, guid: 23aa3b0ac2b0a6a49921891cea0a4fac, type: 3}
+    - target: {fileID: 3108870759111794827, guid: 8d102fbc1a9355145947d5f6acfc7b34, type: 3}
+      propertyPath: m_text
+      value: Keycode Task
+      objectReference: {fileID: 0}
     - target: {fileID: 3109136228670011494, guid: 8d102fbc1a9355145947d5f6acfc7b34, type: 3}
       propertyPath: m_Mesh
       value: 
@@ -612,6 +619,14 @@ PrefabInstance:
     - target: {fileID: 7061002278568738742, guid: 8d102fbc1a9355145947d5f6acfc7b34, type: 3}
       propertyPath: m_LocalPosition.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7379588890555110156, guid: 8d102fbc1a9355145947d5f6acfc7b34, type: 3}
+      propertyPath: TaskName
+      value: KeycodeTask
+      objectReference: {fileID: 0}
+    - target: {fileID: 7811400576334467355, guid: 8d102fbc1a9355145947d5f6acfc7b34, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -16.63
       objectReference: {fileID: 0}
     - target: {fileID: 7811400576334467355, guid: 8d102fbc1a9355145947d5f6acfc7b34, type: 3}
       propertyPath: m_LocalPosition.y
@@ -1035,6 +1050,9 @@ MonoBehaviour:
   CanTriggerByMouse: 1
   CanTriggerByKeys: 1
   TriggerKeys: 66000000
+  OnInteraction:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!135 &1074436948
 SphereCollider:
   m_ObjectHideFlags: 0

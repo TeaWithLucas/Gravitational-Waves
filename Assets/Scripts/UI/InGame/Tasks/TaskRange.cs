@@ -20,7 +20,18 @@ public class TaskRange : MonoBehaviour, ITaskPrefab {
     public WaveData ObvservedWave { get; private set; }
     public WaveData PredictedWave { get; private set; }
 
-    public bool Ready { get; private set; }
+    private bool ready;
+
+    public bool IsReady()
+    {
+        return ready;
+    }
+
+    private void SetReady(bool value)
+    {
+        ready = value;
+    }
+
     public GameObject TotalMassContainer { get; private set; }
     public Slider TotalMassSlider { get; private set; }
     public TextMeshProUGUI TotalMassLabel { get; private set; }
@@ -43,7 +54,7 @@ public class TaskRange : MonoBehaviour, ITaskPrefab {
     public float WinConditionPercent = 5;
 
     private void OnEnable() {
-        if (!Ready) {
+        if (!IsReady()) {
             TotalMassContainer = transform.Find("Interaction Area").Find("Total Mass").gameObject;
             TotalMassSlider = TotalMassContainer.GetComponentInChildren<Slider>();
             TotalMassLabel = TotalMassContainer.transform.Find("Label").GetComponentInChildren<TextMeshProUGUI>();
@@ -54,7 +65,7 @@ public class TaskRange : MonoBehaviour, ITaskPrefab {
 
             CompleteBtn = transform.Find("Button Area").Find("Complete Task Button").GetComponent<Button>();
             LineChart = transform.Find("Graph").GetComponentInChildren<LineChart>();
-            Ready = true;
+            SetReady(true);
         }
     }
 

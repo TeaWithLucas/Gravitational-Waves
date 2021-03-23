@@ -1,12 +1,10 @@
 using Game.Managers;
 using Game.Players;
-using Game.Scores;
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-namespace Game.Tasks {
+namespace Game.Tasks
+{
     [Serializable]
     public abstract class Task : ITask {
         public bool IsInProgress { get; protected set; }
@@ -19,14 +17,12 @@ namespace Game.Tasks {
         public Task Parent { get; protected set; }
         public Player Owner { get; protected set; }
 
-
         public Task(string id, string title, string description, string prefab, string reward) {
             Id = id;
             Title = title;
             Description = description;
             Prefab = prefab;
             Reward = reward;
-            defaults();
         }
 
         public Task(Task task) {
@@ -36,12 +32,6 @@ namespace Game.Tasks {
             Description = task.Description;
             Prefab = task.Prefab;
             Reward = task.Reward;
-            defaults();
-        }
-
-        private void defaults() {
-            IsInProgress = false;
-            IsCompleted = false;
         }
 
         public abstract Task Clone();

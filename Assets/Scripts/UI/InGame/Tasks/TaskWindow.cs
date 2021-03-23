@@ -1,19 +1,22 @@
 using Game.Managers;
 using Game.Tasks;
-using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class TaskWindow : MonoBehaviour {
 
-
     public GameObject Window { get; private set; }
     public Button CloseWindowBtn { get; private set; }
     public GameObject TaskContainer { get; private set; }
     public ITaskPrefab TaskInstance { get; private set; }
     public TMP_Text TaskTitle { get; private set; }
+
+    public string TaskCorrectAnswer { get; private set; }
+
+    public string TaskExternalURL{ get; private set; }
+
+    public GenericTaskManager GenericTaskManager;
 
     public Task Task { get; private set; }
 
@@ -33,16 +36,6 @@ public class TaskWindow : MonoBehaviour {
         }
     }
 
-    // Start is called before the first frame update
-    void Start() {
-
-    }
-
-    // Update is called once per frame
-    void Update() {
-
-    }
-
     private void OnDestroy() {
         CloseWindowBtn.onClick.RemoveAllListeners();
     }
@@ -50,7 +43,22 @@ public class TaskWindow : MonoBehaviour {
     public void SetTask(Task task) {
         Task = task;
         TaskTitle.text = task.Title;
-        TaskInstance = InstanceManager.Instantiate(task.Prefab, TaskContainer).GetComponent<ITaskPrefab>();
+        if (task is GenericTask genericTask)
+        {
+            var genericTaskGameObject = InstanceManager.Instantiate("GenericTask", TaskContainer);
+            TaskInstance = genericTaskGameObject.GetComponent<ITaskPrefab>();
+
+            var genericTaskManager = genericTaskGameObject.GetComponent<GenericTaskManager>();
+
+            genericTaskManager.SetTask(genericTask);
+        }
+        else
+        {
+            TaskInstance = InstanceManager.Instantiate(task.Prefab, TaskContainer).GetComponent<ITaskPrefab>();
+
+        }
+
+        Task.Owner.HasTaskOpen = true;
         TaskInstance.SetParent(this);
     }
 
@@ -61,6 +69,7 @@ public class TaskWindow : MonoBehaviour {
     }
 
     public void CloseWindow() {
+        Task.Owner.HasTaskOpen = false;
         Destroy(gameObject);
     }
 }

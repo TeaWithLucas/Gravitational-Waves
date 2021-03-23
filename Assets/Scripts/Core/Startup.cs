@@ -4,22 +4,23 @@ using UnityEngine;
 using UnityEditor;
 using Game.Managers;
 using System;
+using System.Threading.Tasks;
 
 namespace Game.Core {
 
     //[InitializeOnLoad]
     public static class Startup {
-
-        static Startup() {
-            Debug.Log("Start Script - Up and running");
-        }
-
         [RuntimeInitializeOnLoadMethod]
-        static void OnRuntimeMethodLoad() {
+        static async Task OnRuntimeMethodLoad() {
             Debug.Log("Starting Manager Loading");
+            await TaskManager.LoadAsync();
+
             SettingsManager.Load();
             AssetManager.Load();
             InstanceManager.Load();
+            
+            PlayerManager.Load();
+
             UIManager.Load();
 
             MySceneManager.Load();
@@ -27,7 +28,8 @@ namespace Game.Core {
             InputManager.Load();
 
             ActionManager.Load();
-            PlayerManager.Load();
+            
+
             TeamManager.Load();
 
             NetworkManager.Load();
